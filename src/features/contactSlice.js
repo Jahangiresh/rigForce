@@ -9,12 +9,12 @@ const { accessToken } = localStorage.getItem("user")
   ? JSON.parse(localStorage.getItem("user"))
   : "";
 
-export const createCategory = createAsyncThunk(
-  "category/postApi",
+export const createContact = createAsyncThunk(
+  "contact/postApi",
   async (payload) => {
     const response = await axios
       .post(
-        `http://devserver298-001-site1.ctempurl.com/api/v1/equipmentcategories`,
+        `http://devserver298-001-site1.ctempurl.com/api/v1/contactusforms`,
         payload,
         {
           headers: {
@@ -22,14 +22,14 @@ export const createCategory = createAsyncThunk(
             Authorization: `Bearer ${accessToken}`,
           },
           body: {
-            pageNumber: 1,
+            // pageNumber: 1,
             //     pageNumber: 10,
           },
         }
       )
       .then((res) => {
         console.log(res);
-        toast.success("yaradıldı");
+        toast.success("sent");
         // window.location = "/adminalshn001907/branches";
       })
       .catch((err) => {
@@ -38,8 +38,8 @@ export const createCategory = createAsyncThunk(
     return response.data;
   }
 );
-export const deleteCategory = createAsyncThunk(
-  "category/deleteApi",
+export const deleteContact = createAsyncThunk(
+  "contact/deleteApi",
   async (payload) => {
     try {
       const response = await axios.delete(
@@ -59,8 +59,8 @@ export const deleteCategory = createAsyncThunk(
     }
   }
 );
-export const categoryFetch = createAsyncThunk(
-  "category/categoryFetch",
+export const contactFetch = createAsyncThunk(
+  "contact/categoryFetch",
   async () => {
     try {
       const resp = await axios.get(
@@ -81,25 +81,25 @@ export const categoryFetch = createAsyncThunk(
   }
 );
 
-const categorySlice = createSlice({
-  name: "categories",
+const contactSlice = createSlice({
+  name: "contact",
   initialState,
   reducers: {},
   extraReducers: {
-    [categoryFetch.pending]: (state, action) => {
+    [contactFetch.pending]: (state, action) => {
       state.status = "pending";
     },
-    [categoryFetch.fulfilled]: (state, action) => {
+    [contactFetch.fulfilled]: (state, action) => {
       state.status = "success";
       state.items = action.payload;
     },
-    [categoryFetch.rejected]: (state, action) => {
+    [contactFetch.rejected]: (state, action) => {
       state.status = "fail";
     },
   },
 });
-export const getAllCategories = (state) => state.categories.items;
+export const getAllContacts = (state) => state.categories.items;
 
 export const getStatus = (state) => state.categories.status;
 
-export default categorySlice.reducer;
+export default contactSlice.reducer;
