@@ -65,13 +65,17 @@ export default function Settings() {
                 key={setting.id}
                 sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
               >
-                <TableCell component="th" scope="row">
-                  <img
-                    className="adminadvocates__img"
-                    src={`http://devserver298-001-site1.ctempurl.com/api/v1/files?filepath=${setting.image.filePath}`}
-                    alt="img"
-                  />
-                </TableCell>
+                {setting.image ? (
+                  <TableCell component="th" scope="row">
+                    <img
+                      className="adminadvocates__img"
+                      src={`http://devserver298-001-site1.ctempurl.com/api/v1/files?filepath=${setting.image.filePath}`}
+                      alt="img"
+                    />
+                  </TableCell>
+                ) : (
+                  ""
+                )}
                 <TableCell align="left">{setting.value}</TableCell>
                 <TableCell align="left">{setting.key}</TableCell>
                 <TableCell align="right" className="adminadvocates__icons">

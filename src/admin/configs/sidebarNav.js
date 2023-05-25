@@ -7,12 +7,6 @@ const sidebarNav = [
   },
 
   {
-    link: "/adminalshn001907/branches",
-    section: "branches",
-    icon: <i className="bx bx-cube"></i>,
-    text: "Filiallar",
-  },
-  {
     link: "/adminalshn001907/categories",
     section: "categories",
     icon: <i className="bx bx-cube"></i>,
@@ -41,6 +35,12 @@ const sidebarNav = [
     section: "sliders",
     icon: <i className="bx bx-cube"></i>,
     text: "Slider",
+  },
+  {
+    link: "/adminalshn001907/equipments",
+    section: "equipments",
+    icon: <i className="bx bx-cube"></i>,
+    text: "Mehsullar",
   },
 ];
 

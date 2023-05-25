@@ -5,13 +5,7 @@ import "../admin/scss/App.scss";
 import Dashboard from "../admin/pages/Dashboard";
 import MainLayout from "../admin/layout/MainLayout";
 import Login from "../admin/pages/Login";
-import Advocates from "../admin/pages/Branches";
-import CreateAdvocate from "../admin/pages/CreateBranch";
-import EditAdvocate from "../admin/pages/EditBranch";
 import AuthService from "../admin/services/AuthService";
-import CreateBranch from "../admin/pages/CreateBranch";
-import EditBranch from "../admin/pages/EditBranch";
-import Blogs from "../admin/pages/Blogs";
 import Categories from "../admin/pages/Categories";
 import CreateCategory from "../admin/pages/CreateCategory";
 import Partners from "../admin/pages/Partners";
@@ -26,6 +20,10 @@ import PartnersEdit from "../admin/pages/PartnersEdit copy";
 import ServicesEdit from "../admin/pages/ServicesEdit";
 import SettingsEdit from "../admin/pages/SettingsEdit";
 import SlidersCreate from "../admin/pages/SlidersCreate";
+import SlidersEdit from "../admin/pages/SlidersEdit";
+import Equipments from "../admin/pages/Equipments";
+import EquipmentsCreate from "../admin/pages/EquipmentsCreate";
+import EquipmentsEdit from "../admin/pages/EquipmentsEdit";
 
 const AdminLayout = () => {
   let user1 = localStorage.getItem("user");
@@ -77,11 +75,7 @@ const AdminLayout = () => {
           {user1 ? (
             <Route path="/adminalshn001907" element={<MainLayout />}>
               <Route index element={<Dashboard />} />
-              <Route
-                path="/adminalshn001907/branches/create"
-                element={<CreateBranch />}
-              />
-              <Route path="/adminalshn001907/blogs" element={<Blogs />} />
+
               <Route
                 path="/adminalshn001907/categories"
                 element={<Categories />}
@@ -126,6 +120,23 @@ const AdminLayout = () => {
                 path="/adminalshn001907/sliders/create"
                 element={<SlidersCreate />}
               />
+              <Route
+                path="/adminalshn001907/sliders/edit/:id"
+                element={<SlidersEdit />}
+              />
+              <Route
+                path="/adminalshn001907/equipments"
+                element={<Equipments />}
+              />
+              <Route
+                path="/adminalshn001907/equipments/create"
+                element={<EquipmentsCreate />}
+              />
+              <Route
+                path="/adminalshn001907/equipments/edit/:id"
+                element={<EquipmentsEdit />}
+              />
+
               {/* <Route path="/adminalshn001907/services" element={<Services />} /> */}
 
               {/* <Route

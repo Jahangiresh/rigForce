@@ -77,7 +77,7 @@ export default function Sliders() {
                 <TableCell align="right" className="adminadvocates__icons">
                   <AiOutlineEdit
                     onClick={() =>
-                      navigate(`/adminalshn001907/sliders/${slider.id}`)
+                      navigate(`/adminalshn001907/sliders/edit/${slider.id}`)
                     }
                     className="edit__icons"
                   />
