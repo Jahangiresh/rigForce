@@ -42,7 +42,6 @@ export default function Partners() {
     }).then((result) => {
       if (result.isConfirmed) {
         dispatch(deletePartner(id));
-        console.log(id);
         // window.location.reload(false);
 
         // if (isDeleting) {

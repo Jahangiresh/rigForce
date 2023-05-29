@@ -17,7 +17,6 @@ const CreateBranch = () => {
       address: "",
     },
     onSubmit: (values) => {
-      console.log("val", values);
       var req = new FormData();
       req.append("name", values.name);
       req.append("email", values.email);
@@ -38,7 +37,6 @@ const CreateBranch = () => {
     },
   });
   const [fullnumber, setFullNumber] = useState();
-console.log(formik.values.image);
   return (
     <div className="createadvocates">
       <div>

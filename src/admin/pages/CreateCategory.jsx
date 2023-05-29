@@ -13,7 +13,6 @@ const CreateCategory = () => {
       imageFile: "",
     },
     onSubmit: (values) => {
-      console.log("val", values);
       var req = new FormData();
       req.append("title", values.title);
       req.append("description", values.description);

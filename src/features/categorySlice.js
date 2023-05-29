@@ -28,7 +28,6 @@ export const createCategory = createAsyncThunk(
         }
       )
       .then((res) => {
-        console.log(res);
         toast.success("yaradıldı");
         // window.location = "/adminalshn001907/branches";
       })
@@ -72,7 +71,6 @@ export const categoryFetch = createAsyncThunk(
           },
         }
       );
-      console.log("data", resp.data);
       return resp.data;
     } catch (error) {
       console.error("Error fetching categories:", error);

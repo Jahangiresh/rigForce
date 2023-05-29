@@ -15,7 +15,6 @@ const SettingCreate = () => {
       file: "",
     },
     onSubmit: (values) => {
-      console.log("val", values);
       var req = new FormData();
       req.append("key", values.key);
       req.append("value", values.value);

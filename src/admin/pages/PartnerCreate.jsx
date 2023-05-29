@@ -13,7 +13,6 @@ const PartnerCreate = () => {
       imageFile: "",
     },
     onSubmit: (values) => {
-      console.log("val", values);
       var req = new FormData();
       req.append("urlLink", values.urlLink);
       req.append("imageFile", values.imageFile);

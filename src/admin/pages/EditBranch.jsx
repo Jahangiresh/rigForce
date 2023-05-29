@@ -57,7 +57,6 @@ const EditBranch = () => {
         const { token } = localStorage.getItem("user")
           ? JSON.parse(localStorage.getItem("user"))
           : "";
-        console.log("values", values);
 
         try {
           await axios.put(
@@ -85,7 +84,6 @@ const EditBranch = () => {
         }
       },
     });
-  // console.log("values", formik.values);
   return (
     <div>
       <div className="createadvocates">

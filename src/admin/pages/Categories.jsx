@@ -26,9 +26,7 @@ export default function Categories() {
   //   const [blogs, setBlogs] = useState([]);
   const categories = useSelector(getAllCategories);
   const dispatch = useDispatch();
-  React.useEffect(() => {
-    console.log(categories);
-  }, []);
+  React.useEffect(() => {}, []);
   const handleDelete = (id) => {
     Swal.fire({
       title: "Are you sure?",

@@ -12,7 +12,6 @@ const { accessToken } = localStorage.getItem("user")
 export const deleteSlider = createAsyncThunk(
   "slider/deleteApi",
   async (payload) => {
-    console.log("asdasd", payload);
     try {
       const response = await axios.delete(
         `http://devserver298-001-site1.ctempurl.com/api/v1/sliders/${payload}`,
@@ -46,7 +45,6 @@ export const createSlider = createAsyncThunk(
         }
       )
       .then((res) => {
-        console.log(res);
         toast.success("yaradıldı");
         // window.location = "/adminalshn001907/branches";
       })
@@ -66,7 +64,6 @@ export const sliderFetch = createAsyncThunk("slider/sliderFetch", async () => {
       },
     }
   );
-  console.log("data", resp);
   return resp?.data;
 });
 

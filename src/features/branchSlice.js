@@ -49,7 +49,6 @@ export const createBranch = createAsyncThunk(
         },
       })
       .then((res) => {
-        console.log(res);
         toast.success("yaradıldı");
         window.location = "/adminalshn001907/branches";
       })

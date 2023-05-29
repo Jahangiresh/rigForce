@@ -12,7 +12,6 @@ const { accessToken } = localStorage.getItem("user")
 export const deleteService = createAsyncThunk(
   "Services/deleteApi",
   async (payload) => {
-    console.log("asdasd", payload);
     try {
       const response = await axios.delete(
         `http://devserver298-001-site1.ctempurl.com/api/v1/providedservices/${payload}`,
@@ -46,7 +45,6 @@ export const createService = createAsyncThunk(
         }
       )
       .then((res) => {
-        console.log(res);
         toast.success("yaradıldı");
         // window.location = "/adminalshn001907/branches";
       })
@@ -69,7 +67,6 @@ export const ServiceFetch = createAsyncThunk(
         },
       }
     );
-    console.log("data", resp);
     return resp?.data;
   }
 );

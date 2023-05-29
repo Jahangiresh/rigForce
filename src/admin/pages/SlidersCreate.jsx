@@ -15,7 +15,6 @@ const SlidersCreate = () => {
       imageFile: "",
     },
     onSubmit: (values) => {
-      console.log("val", values);
       var req = new FormData();
       req.append("order", values.order);
       req.append("imageFile", values.imageFile);

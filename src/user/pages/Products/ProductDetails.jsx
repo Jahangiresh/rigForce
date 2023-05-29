@@ -4,26 +4,73 @@ import prodImg from "../../../assets/images/prod.png";
 import ImageGallery from "react-image-gallery";
 import ContactComponent from "../../components/ContactComponent";
 import LogoClouds from "../../components/LogoClouds";
+import { useEffect } from "react";
+import { useParams } from "react-router-dom";
+import axios from "axios";
+import { toast } from "react-hot-toast";
+import { useReducer } from "react";
 
-const images = [
-  {
-    original: prodImg,
-    thumbnail: prodImg,
-  },
-  {
-    original: prodImg,
-    thumbnail: prodImg,
-  },
-  {
-    original: prodImg,
-    thumbnail: prodImg,
-  },
-  {
-    original: prodImg,
-    thumbnail: prodImg,
-  },
-];
+const reducer = (state, action) => {
+  switch (action.type) {
+    case "FETCH_REQUEST":
+      return { ...state, loading: true };
+    case "FETCH_SUCCESS":
+      return { ...state, prodDetails: action.payload, loading: false };
+    case "FETCH_FAIL":
+      return { ...state, loading: false, error: action.payload };
+    default:
+      return state;
+  }
+};
 const ProductDetails = () => {
+  const [{ error, loader, prodDetails }, dispatch] = useReducer(reducer, {
+    prodDetails: [],
+    error: false,
+    loader: false,
+  });
+
+  const params = useParams();
+  const prodCategory = params.category;
+  const prodId = params.id;
+
+  const fetchProdDetails = async () => {
+    try {
+      dispatch({ type: "FETCH_REQUEST" });
+
+      const { data } = await axios.get(
+        `http://devserver298-001-site1.ctempurl.com/api/v1/equipments/${prodId}`
+      );
+
+      dispatch({ type: "FETCH_SUCCESS", payload: data });
+    } catch (error) {
+      dispatch({ type: "FETCH_FAIL" });
+      toast.error("Bu kateqoriya üzrə məhsul tapılmadı");
+    }
+  };
+
+  useEffect(() => {
+    fetchProdDetails();
+  }, [prodId]);
+
+  const images = [];
+
+  if (prodDetails && prodDetails.images && prodDetails.images.length > 0) {
+    const updatedImages = prodDetails.images.map((image) => {
+      return {
+        original:
+          "http://devserver298-001-site1.ctempurl.com/api/v1/files?filepath=" +
+          image.filePath,
+        thumbnail:
+          "http://devserver298-001-site1.ctempurl.com/api/v1/files?filepath=" +
+          image.filePath,
+      };
+    });
+
+    images.push({
+      original: updatedImages[0].original,
+      thumbnail: updatedImages[0].thumbnail,
+    });
+  }
   return (
     <>
       <Breadcrumbs title={"Products"} />
@@ -34,46 +81,49 @@ const ProductDetails = () => {
           </div>
           <div className="col-span-2 pl-6 ">
             <h1 className="text__black font-bold text-[28px] mb-6 ">
-              RGH13 Summit Harness
+              {prodDetails && prodDetails.title}
             </h1>
             <ul className="leading-8">
               <li>
                 <span className="text__black font-medium">Product code: </span>
-                <span>RGH32</span>
+                <span> {prodDetails && prodDetails.productCode}</span>
               </li>{" "}
               <li>
                 <span className="text__black font-medium">Accredited To: </span>
-                <span>EN 12277:2015 Type A & B</span>
+                <span> {prodDetails && prodDetails.accreditedTo}</span>
               </li>{" "}
               <li>
                 <span className="text__black font-medium">Weight: </span>
-                <span>Size 0: 900g, size 1: 950g, size 2: 1kg</span>
+                <span> {prodDetails && prodDetails.weight}</span>
               </li>{" "}
               <li>
                 <span className="text__black font-medium">Size: </span>
-                <span>900g, size 1: 950g, size 2: 1kg</span>
+                <span> {prodDetails && prodDetails.size}</span>
               </li>{" "}
               <li>
                 <span className="text__black font-medium">Material: </span>
-                <span>45mm RIDGE Protect anti-bacterial polyester*</span>
+                <span> {prodDetails && prodDetails.material}</span>
               </li>{" "}
               <li>
                 <span className="text__black font-medium">Fittings: </span>
-                <span>4D rings: aluminium, adjusters: steel</span>
+                <span> {prodDetails && prodDetails.fittings}</span>
               </li>{" "}
               <li>
                 <span className="text__black font-medium">
                   Product Features:{" "}
                 </span>
-                <span>
-                  Ventral & back attachment points • Colour-coded webbing •
-                  Step-in design • Elastic webbing retainers • Bigger webbing
-                  turnbacks
-                </span>
+                <span> {prodDetails && prodDetails.features}</span>
               </li>{" "}
             </ul>
             <ul className="flex flex-col mt-2 gap-y-4">
               <li>
+                <a
+                  href={`http://devserver298-001-site1.ctempurl.com/api/v1/${prodDetails.filePath}`}
+                  download
+                >
+                  {prodDetails.fileName}
+                </a>
+
                 <button className="btn__secondary">Download PDF</button>
               </li>
               <li>

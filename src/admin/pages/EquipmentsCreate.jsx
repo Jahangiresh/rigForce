@@ -1,15 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import { useFormik } from "formik";
 import "../scss/adminadvocates.scss";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Toaster } from "react-hot-toast";
-import { createCategory } from "../../features/categorySlice";
+import { createCategory, getAllCategories } from "../../features/categorySlice";
 import { createPartner } from "../../features/partnerSlice";
 import { createSetting } from "../../features/settingSlice";
 import { createSlider } from "../../features/sliderSlice";
 import { createEquipment } from "../../features/EquipmentSlice";
+
 const EquipmentsCreate = () => {
+  const categories = useSelector(getAllCategories);
   const dispatch = useDispatch();
+
   const formik = useFormik({
     initialValues: {
       title: "",
@@ -21,16 +24,15 @@ const EquipmentsCreate = () => {
       weight: "",
       size: "",
       features: "",
-      mainImageFile: "",
+      mainImageFile: null,
       detailImageFiles: [],
-      pdfFile: "",
-      doCFile: "",
+      pdfFile: null,
+      doCFile: null,
       dataSheet: "",
       equipmentCategoryId: "",
     },
     onSubmit: (values) => {
-      console.log("val", values);
-      var req = new FormData();
+      const req = new FormData();
       req.append("title", values.title);
       req.append("description", values.description);
       req.append("productCode", values.productCode);
@@ -41,32 +43,28 @@ const EquipmentsCreate = () => {
       req.append("size", values.size);
       req.append("features", values.features);
       req.append("mainImageFile", values.mainImageFile);
-      req.append("detailImageFiles", values.detailImageFiles);
+      values.detailImageFiles.forEach((file, index) => {
+        req.append("detailImageFiles", file);
+      });
       req.append("pdfFile", values.pdfFile);
       req.append("doCFile", values.doCFile);
       req.append("dataSheet", values.dataSheet);
       req.append("equipmentCategoryId", values.equipmentCategoryId);
-      dispatch(
-        createEquipment({
-          title: req.get("title"),
-          description: req.get("description"),
-          productCode: req.get("productCode"),
-          accreditedTo: req.get("accreditedTo"),
-          fittings: req.get("fittings"),
-          material: req.get("material"),
-          weight: req.get("weight"),
-          size: req.get("size"),
-          features: req.get("features"),
-          mainImageFile: req.get("mainImageFile"),
-          detailImageFiles: req.get("detailImageFiles"),
-          pdfFile: req.get("pdfFile"),
-          doCFile: req.get("doCFile"),
-          dataSheet: req.get("dataSheet"),
-          equipmentCategoryId: req.get("equipmentCategoryId"),
-        })
-      );
+
+      dispatch(createEquipment(req));
     },
   });
+
+  const [previewImgs, setPreviewImgs] = useState([]);
+  const handleDetailImagesChange = (e) => {
+    const files = Array.from(e.currentTarget.files);
+    formik.setFieldValue("detailImageFiles", files); // Set the array of files
+
+    // Update the preview images
+    const previewUrls = files.map((file) => URL.createObjectURL(file));
+    setPreviewImgs((prevPreviewImgs) => [...prevPreviewImgs, ...previewUrls]);
+  };
+
   return (
     <div className="createadvocates">
       <div>
@@ -89,16 +87,31 @@ const EquipmentsCreate = () => {
         <label className="createadvocates__forms__label" htmlFor="image">
           detailImageFiles
         </label>
-        <input
-          className="createadvocates__forms__input"
-          id="detailImageFiles"
-          name="detailImageFiles"
-          accept="image/*"
+        {/* <input
           type="file"
           onChange={(e) => {
-            formik.setFieldValue("detailImageFiles", e.currentTarget.files[0]);
+            const files = Array.from(e.currentTarget.files);
+            files.forEach((file, index) => {
+              formik.setFieldValue(`detailImageFiles[${index}]`, file);
+            });
           }}
+        /> */}
+        <input
+          // other attributes...
+          type="file"
+          onChange={(e) => handleDetailImagesChange(e)}
         />
+        <div>
+          <h3>Detail Images:</h3>
+          {previewImgs.map((url, index) => (
+            <img
+              key={index}
+              src={url}
+              alt={`Detail Image ${index + 1}`}
+              style={{ width: "200px", height: "auto" }}
+            />
+          ))}
+        </div>
         <label className="createadvocates__forms__label" htmlFor="image">
           pdfFile
         </label>
@@ -182,7 +195,6 @@ const EquipmentsCreate = () => {
           onChange={formik.handleChange}
           defaultValue={formik.values.accreditedTo}
         />
-
         <label className="createadvocates__forms__label" htmlFor="name">
           fittings
         </label>
@@ -241,15 +253,17 @@ const EquipmentsCreate = () => {
         <label className="createadvocates__forms__label" htmlFor="name">
           equipmentCategoryId
         </label>
-        <input
+        <select
           className="createadvocates__forms__input"
           id="equipmentCategoryId"
           name="equipmentCategoryId"
           type="text"
           onChange={formik.handleChange}
           defaultValue={formik.values.equipmentCategoryId}
-        />
-
+        >
+          {categories &&
+            categories.map((c) => <option value={c.id}>{c.title}</option>)}
+        </select>
         <button className="createadvocates__forms__button" type="submit">
           Submit
         </button>
