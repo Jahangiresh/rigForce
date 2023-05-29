@@ -1,15 +1,22 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Breadcrumbs from "../components/Breadcrumbs";
 import ContactComponent from "../components/ContactComponent";
 import LogoClouds from "../components/LogoClouds";
 import { Formik, Form, Field } from "formik";
 import axios from "axios";
 import { toast } from "react-hot-toast";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { createContact } from "../../features/contactSlice";
+import { getAllSettings } from "../../features/settingSlice";
 
 const Contact = () => {
   const dispatch = useDispatch();
+  const settings = useSelector(getAllSettings)
+  useEffect(() => {
+
+    console.log('setting', settings);
+    // dispatch(settingFetch())
+  }, [])
 
   return (
     <>

@@ -6,7 +6,7 @@ import LogoClouds from "../components/LogoClouds";
 const About = () => {
   return (
     <>
-      <Breadcrumbs title={"about"} />
+      <Breadcrumbs title={"Haqqımızda"} />
       <div className="container py-12">
         <div className="mb-12">
           <h1 className="text__black font-bold text-[28px] mb-3">Rig Force</h1>
