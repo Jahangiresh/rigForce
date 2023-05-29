@@ -82,3 +82,9 @@ body::-webkit-scrollbar-thumb {
 .my__input:focus {
   @apply ring-0 border border-[#003049];
 }
+.text__black {
+  overflow: hidden; /* Hide any overflowing content */
+  text-overflow: ellipsis; /* Truncate the text with an ellipsis (...) */
+  white-space: nowrap; /* Prevent line breaks */
+  max-height: 100px; /* Set a maximum height for the text container */
+}

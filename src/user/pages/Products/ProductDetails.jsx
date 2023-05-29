@@ -51,7 +51,6 @@ const ProductDetails = () => {
   useEffect(() => {
     fetchProdDetails();
   }, [prodId]);
-
   const images = [];
 
   if (prodDetails && prodDetails.images && prodDetails.images.length > 0) {
@@ -66,11 +65,10 @@ const ProductDetails = () => {
       };
     });
 
-    images.push({
-      original: updatedImages[0].original,
-      thumbnail: updatedImages[0].thumbnail,
-    });
+    images.push(...updatedImages); // Use the spread operator (...) to push all images at once
+    console.log(images);
   }
+
   return (
     <>
       <Breadcrumbs title={"Products"} />

@@ -4,8 +4,11 @@ import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import logo1 from "../../assets/images/logo1.png";
 import logo2 from "../../assets/images/logo2.png";
+import { useSelector } from "react-redux";
+import { getAllPartners } from "../../features/partnerSlice";
 
 const LogoClouds = () => {
+  const logos = useSelector(getAllPartners);
   var settings = {
     dots: false,
     infinite: false,
@@ -51,48 +54,16 @@ const LogoClouds = () => {
           Our partners
         </h1>
         <Slider {...settings} className="h-full mt-10">
-          <div className="px-4">
-            <img
-              className="h-full w-full  object-contain"
-              src={logo2}
-              alt="logo"
-            />
-          </div>
-          <div className="px-4">
-            <img
-              className="h-full w-full  object-contain"
-              src={logo2}
-              alt="logo"
-            />
-          </div>{" "}
-          <div className="px-4">
-            <img
-              className="h-full w-full  object-contain"
-              src={logo2}
-              alt="logo"
-            />
-          </div>{" "}
-          <div className="px-4">
-            <img
-              className="h-full w-full  object-contain"
-              src={logo2}
-              alt="logo"
-            />
-          </div>{" "}
-          <div className="px-4">
-            <img
-              className="h-full w-full  object-contain"
-              src={logo2}
-              alt="logo"
-            />
-          </div>{" "}
-          <div className="px-4">
-            <img
-              className="h-full w-full  object-contain"
-              src={logo2}
-              alt="logo"
-            />
-          </div>
+          {logos &&
+            logos.map((logo) => (
+              <div className="px-4 h-[70px]">
+                <img
+                  className="h-full w-full  object-contain"
+                  src={`http://devserver298-001-site1.ctempurl.com/api/v1/files?filepath=${logo.image.filePath}`}
+                  alt="logo"
+                />
+              </div>
+            ))}
         </Slider>
       </div>
     </div>
