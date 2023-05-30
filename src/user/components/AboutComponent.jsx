@@ -2,6 +2,7 @@ import React from "react";
 import aboutsvg1 from "../../assets/images/aboutvector1.svg";
 import aboutsvg2 from "../../assets/images/aboutvector2.svg";
 import { FiChevronRight } from "react-icons/fi";
+import { Link } from "react-router-dom";
 
 const AboutComponent = () => {
   return (
@@ -23,9 +24,10 @@ const AboutComponent = () => {
               consectetur. Amet donec leo sit erat. Eleifend risus diam cursus
               dictum est Lorem ipsum dolor sit amet ...
             </p>
-            <button className="flex btn__main items-center ">
-              Read more <FiChevronRight className="ml-2" />{" "}
-            </button>
+            <Link to='/about'>
+              <button className="flex btn__main items-center ">
+                Read more <FiChevronRight className="ml-2" />{" "}
+              </button></Link>
           </div>
           <div className="w-full">
             <div className="img__div w-14 h-14 mb-7">
@@ -44,9 +46,10 @@ const AboutComponent = () => {
               consectetur. Amet donec leo sit erat. Eleifend risus diam cursus
               dictum est Lorem ipsum dolor sit amet ...
             </p>
-            <button className="flex btn__main items-center ">
-              Read more <FiChevronRight className="ml-2" />{" "}
-            </button>
+            <Link to='/about'>
+              <button className="flex btn__main items-center ">
+                Read more <FiChevronRight className="ml-2" />{" "}
+              </button></Link>
           </div>
         </div>
       </div>

@@ -49,7 +49,7 @@ const ProductsList = () => {
           }
         );
         dispatch({ type: "FETCH_SUCCESS", payload: data });
-      } catch (error) {}
+      } catch (error) { }
       dispatch({ type: "FETCH_FAIL" });
       toast.error("Bu kateqoriya üzrə məhsul tapılmadı");
     };
