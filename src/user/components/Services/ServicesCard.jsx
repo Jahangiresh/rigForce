@@ -23,7 +23,7 @@ const ServicesCard = () => {
             </div>
             <h2 className="text-white font-bold text-xl">{service.title}</h2>
             <p className="my-4 text-white text-center description-text">
-              {service.description}
+              {service.description.length > 120 ? service.description.substring(0, 119) + '...' : service.description}
             </p>
             <button
               onClick={() => navigate(`/services/${service.id}`)}
