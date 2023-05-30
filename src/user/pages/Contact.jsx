@@ -8,9 +8,11 @@ import { toast } from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
 import { createContact } from "../../features/contactSlice";
 import { getAllSettings } from "../../features/settingSlice";
+import { useTranslation } from "react-i18next";
 
 const Contact = () => {
   const dispatch = useDispatch();
+  const { t } = useTranslation()
   const settings = useSelector(getAllSettings)
   useEffect(() => {
 
@@ -63,7 +65,7 @@ const Contact = () => {
                   className="text__black font-bold mb-2"
                   htmlFor="fullName"
                 >
-                  Full name
+                  {t("soyad")}
                 </label>
                 <Field
                   type="text"
@@ -88,7 +90,7 @@ const Contact = () => {
                   className="text__black font-bold mb-2"
                   htmlFor="phoneNumber"
                 >
-                  Phone number
+                  {t("nomre")}
                 </label>
                 <Field
                   type="text"
@@ -99,7 +101,7 @@ const Contact = () => {
               </div>
               <div className="flex flex-col">
                 <label className="text__black font-bold mb-2" htmlFor="subject">
-                  Subject
+                  {t("movzu")}
                 </label>
                 <Field
                   type="text"

@@ -5,5 +5,8 @@
   "Əlaqə": "Contact",
   "Ünvan": "Address",
   "Məhsullar": "Products",
-  "salam": "hello"
+  "salam": "hello",
+  "soyad": "Full Name",
+  "nomre": "Phone Number",
+  "movzu": "Subject"
 }
