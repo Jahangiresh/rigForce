@@ -48,7 +48,7 @@ const LogoClouds = () => {
   };
 
   return (
-    <div className="h-[219px] py-10">
+    <div className="h-[219px] py-10 overflow-y-hidden">
       <div className="container">
         <h1 className="text-center text__black font-bold text-[28px] ">
           Our partners

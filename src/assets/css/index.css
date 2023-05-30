@@ -63,8 +63,9 @@ body::-webkit-scrollbar-thumb {
 /* buttons */
 
 .btn__main {
-  @apply bg__yellow text-white font-medium text-base py-2 px-6;
+  @apply bg__yellow text-white font-medium text-base py-2 px-6 transition-all duration-200;
 }
+
 .btn__secondary {
   @apply border border-[#C9B38C] text-[#C9B38C] font-medium text-base py-2 px-6;
 }

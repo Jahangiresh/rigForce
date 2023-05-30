@@ -18,7 +18,12 @@ const AboutComponent = () => {
               />
             </div>
             <h1 className="text-[28px] font-bold text__black mb-3">About Us</h1>
-            <p className="leading-8 text__black mb-6">
+            <p
+              style={{
+                whiteSpace: "normal",
+              }}
+              className="md:leading-8 text__black mb-6 "
+            >
               Lorem ipsum dolor sit amet consectetur. Amet donec leo sit erat.
               Eleifend risus diam cursus dictum est Lorem ipsum dolor sit amet
               consectetur. Amet donec leo sit erat. Eleifend risus diam cursus
@@ -40,7 +45,12 @@ const AboutComponent = () => {
             <h1 className="text-[28px] font-bold text__black mb-3">
               Vision & Mission
             </h1>
-            <p className="leading-8 text__black mb-6">
+            <p
+              style={{
+                whiteSpace: "normal",
+              }}
+              className="md:leading-8 text__black mb-6"
+            >
               Lorem ipsum dolor sit amet consectetur. Amet donec leo sit erat.
               Eleifend risus diam cursus dictum est Lorem ipsum dolor sit amet
               consectetur. Amet donec leo sit erat. Eleifend risus diam cursus
