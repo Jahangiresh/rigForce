@@ -47,10 +47,10 @@ const Header = () => {
                 to="/services"
               >
                 Xidmətlər
-                <FiChevronDown className={`ml-2 `} />
-                <div
+                {/* <FiChevronDown className={`ml-2 `} /> */}
+                {/* <div
                   className={` border-t-blue-500 absolute w-full h-32 border bg-white border-[#e3e3e3] top-[100%] left-0 hidden group-hover:block hover:!block z-20`}
-                ></div>
+                ></div> */}
               </Link>
               <li className="flex items-center relative  h-full group ">
                 <Link to="/products">Məhsullar</Link>
