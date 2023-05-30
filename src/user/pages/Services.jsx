@@ -33,8 +33,13 @@ const Services = () => {
                 <h2 className="text__black font-bold text-xl ">
                   {service.title}
                 </h2>
-                <p className="my-4 text__black text-center">
-                  {service.description}
+                <p
+                  style={{
+                    whiteSpace: "normal",
+                  }}
+                  className="my-4 text__black text-center h-auto"
+                >
+                  {service.description.substring(0, 100)}...
                 </p>
 
                 <button
