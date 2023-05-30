@@ -8,11 +8,14 @@ import LogoClouds from "../components/LogoClouds";
 import { useSelector } from "react-redux";
 import { getAllServices } from "../../features/serviceSlice";
 import { useNavigate } from "react-router-dom";
+import Loader from "../components/Loader/Loader";
 
 const Services = () => {
   const navigate = useNavigate();
   const services = useSelector(getAllServices);
-  return (
+  return !services ? (
+    <Loader />
+  ) : (
     <>
       <Breadcrumbs title={"Services"} />
       <div className="container">

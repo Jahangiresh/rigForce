@@ -88,3 +88,16 @@ body::-webkit-scrollbar-thumb {
   white-space: nowrap; /* Prevent line breaks */
   max-height: 100px; /* Set a maximum height for the text container */
 }
+
+.headerlangs {
+  position: absolute;
+  left: 0;
+  background: #fff;
+  padding: 20px;
+  border: 1px solid #e3e3e3;
+  top: 100%;
+  z-index: 100;
+}
+.headerlangs__li {
+  list-style: none;
+}

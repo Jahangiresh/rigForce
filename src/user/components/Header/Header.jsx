@@ -6,7 +6,8 @@ import { FiChevronDown } from "react-icons/fi";
 import MenuDrawer from "./MenuDrawer";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllCategories, getStatus } from "../../../features/categorySlice";
-
+import HeaderLangs from "./HeaderLangs";
+import { useTranslation } from "react-i18next";
 const Header = () => {
   const navigate = useNavigate();
   const categories = useSelector(getAllCategories);
@@ -18,8 +19,11 @@ const Header = () => {
     // console.log(title);
     navigate(`/products/${catId}`);
   };
+  // const s = "salam";
+  const { t } = useTranslation();
   return (
     <div className="h-20  flex items-center">
+      {/* <h1>{t(`${s}`)}</h1> */}
       <div className="container h-full  ">
         <div className="grid grid-cols-2 max-lg:grid-cols-3 w-full h-full">
           <div className="logo h-full flex items-center ">
@@ -34,26 +38,22 @@ const Header = () => {
                 className="flex items-center relative  h-full group "
                 to="/"
               >
-                Əsas səhifə
+                {t("Əsas səhifə")}
               </Link>
               <Link
                 className="flex items-center relative  h-full group "
                 to="/about"
               >
-                Haqqımızda
+                {t("Haqqımızda")}
               </Link>
               <Link
                 className="flex items-center relative  h-full group "
                 to="/services"
               >
-                Xidmətlər
-                {/* <FiChevronDown className={`ml-2 `} /> */}
-                {/* <div
-                  className={` border-t-blue-500 absolute w-full h-32 border bg-white border-[#e3e3e3] top-[100%] left-0 hidden group-hover:block hover:!block z-20`}
-                ></div> */}
+                {t("Xidmətlər")}
               </Link>
               <li className="flex items-center relative  h-full group ">
-                <Link to="/products">Məhsullar</Link>
+                <Link to="/products">{t("Məhsullar")}</Link>
                 <FiChevronDown className={`ml-2 `} />
                 <div
                   className={` border-t-blue-500 absolute w-max px-5 py-3  h-max  border bg-white border-[#e3e3e3] top-[100%] left-0 hidden group-hover:block hover:!block z-20`}
@@ -75,8 +75,10 @@ const Header = () => {
                 className="flex items-center relative  h-full group "
                 to="/contact"
               >
-                Əlaqə
+                {t("Əlaqə")}
               </Link>
+
+              <HeaderLangs />
             </ul>
           </nav>
         </div>

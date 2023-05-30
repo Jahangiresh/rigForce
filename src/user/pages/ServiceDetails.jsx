@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
@@ -11,38 +11,27 @@ const ServiceDetails = () => {
   const services = useSelector(getAllServices);
   const params = useParams();
   const serviceId = params.id;
-  let currentService;
+  const [currentService, setCurrentService] = useState();
+
   useEffect(() => {
-    currentService = services.find((s) => s.id == serviceId);
+    setCurrentService(services.find((s) => s.id == serviceId));
+    console.log(currentService);
   }, [services]);
+
   return (
     <>
       <Breadcrumbs title={"about"} />
-      {currentService && currentService.title}sa
+
       <div className="container py-12">
         <div className="mb-12">
-          <h1 className="text__black font-bold text-[28px] mb-3">Rig Force</h1>
-          <p className="leading-8">
-            Lorem ipsum dolor sit amet consectetur. Amet donec leo sit erat.
-            Eleifend risus diam cursus dictum est Lorem ipsum dolor sit amet
-            consectetur. Amet donec leo sit erat. Eleifend risus diam cursus
-            dictum est Lorem ipsum dolor sit amet consectetur. Amet donec leo
-            sit erat. Eleifend risus diam cursus dictum est Lorem ipsum dolor
-            sit amet consectetur. Amet donec leo sit erat. Eleifend risus diam
-            cursus dictum estLorem ipsum dolor sit amet consectetur. Amet donec
-            leo sit erat. Eleifend risus diam cursus dictum est Lorem ipsum
-            dolor sit amet consectetur. Amet donec leo sit erat. Eleifend risus
-            diam cursus dictum est Lorem ipsum dolor sit amet consectetur. Amet
-            donec leo sit erat. Eleifend risus diam cursus dictum est Lorem
-            ipsum dolor sit amet consectetur. Amet donec leo sit erat. Eleifend
-            risus diam cursus dictum est Lorem ipsum dolor sit amet consectetur.
-            Amet donec leo sit erat. Eleifend risus diam cursus dictum est Lorem
-            ipsum dolor sit amet consectetur. Amet donec leo sit erat. Eleifend
-            risus diam cursus dictum estLorem ipsum dolor sit amet consectetur.
-            Amet donec leo sit erat. Eleifend risus diam cursus dictum est Lorem
-            ipsum dolor sit amet consectetur. Amet donec leo sit erat. Eleifend
-            risus diam cursus dictum estLorem ipsum dolor sit amet consectetur
-          </p>
+          <h1 className="text__black font-bold text-[28px] mb-3">
+            {currentService && currentService.title}
+          </h1>
+          <div className="flex">
+            <p className="leading-8">
+              {currentService && currentService.description}
+            </p>
+          </div>
         </div>
       </div>
       <ContactComponent />
