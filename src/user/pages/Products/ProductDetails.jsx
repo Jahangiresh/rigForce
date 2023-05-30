@@ -140,7 +140,12 @@ const ProductDetails = () => {
             <h1 className="text__black font-bold text-[28px] mb-6 mt-24 ">
               Product Description:
             </h1>
-            <p className="text__black leading-8">
+            <p
+              style={{
+                whiteSpace: "normal",
+              }}
+              className="text__black leading-8"
+            >
               Our V-shaped Summit adventure harness comes with two points of
               connection. This collection of harnesses are colour coded for easy
               and fast size allocation. The step in design and different

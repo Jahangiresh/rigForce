@@ -102,3 +102,15 @@ body::-webkit-scrollbar-thumb {
 .headerlangs__li {
   list-style: none;
 }
+.image-gallery-slide {
+  @apply !h-[500px] !flex !items-center !justify-center overflow-hidden max-md:!h-[400px];
+}
+.image-gallery-slide > img {
+  @apply !w-full !object-contain;
+}
+.image-gallery-thumbnail-inner {
+  @apply !h-24;
+}
+.image-gallery-thumbnail-inner > img {
+  @apply !w-full !object-contain object-center;
+}
