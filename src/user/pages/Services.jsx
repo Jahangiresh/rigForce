@@ -39,7 +39,9 @@ const Services = () => {
                   }}
                   className="my-4 text__black text-center h-auto"
                 >
-                  {service.description.substring(0, 100)}...
+                  {service.description.length > 149 &&
+                    service.description.substring(0, 100)}
+                  ...
                 </p>
 
                 <button

@@ -20,10 +20,13 @@ import ServiceDetails from "../user/pages/ServiceDetails.jsx";
 import { useSelector } from "react-redux";
 import { getAllServices } from "../features/serviceSlice.js";
 import { useEffect } from "react";
+import ScrollToTop from "../user/components/ScrollToTop.js";
 const Layout = () => {
   return (
     <div className="layout__app">
       <BrowserRouter>
+        <ScrollToTop />
+
         <HeaderUpper />
         <Header />
         <Routes>

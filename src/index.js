@@ -4,7 +4,6 @@ import App from "./App";
 import "./i18next";
 import { configureStore } from "@reduxjs/toolkit";
 import { Provider } from "react-redux";
-import branchSlice, { branchFetch } from "./features/branchSlice";
 import "./assets/css/index.css";
 import categorySlice, { categoryFetch } from "./features/categorySlice";
 import partnerSlice, { PartnerFetch } from "./features/partnerSlice";

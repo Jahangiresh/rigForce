@@ -63,11 +63,11 @@ body::-webkit-scrollbar-thumb {
 /* buttons */
 
 .btn__main {
-  @apply bg__yellow text-white font-medium text-base py-2 px-6 transition-all duration-200;
+  @apply bg__yellow text-white font-medium text-base py-2 px-6 transition-all duration-200 hover:bg-transparent border hover:border-[#003049] hover:text-[#003049];
 }
 
 .btn__secondary {
-  @apply border border-[#C9B38C] text-[#C9B38C] font-medium text-base py-2 px-6;
+  @apply border border-[#C9B38C] text-[#C9B38C] font-medium text-base py-2 px-6 hover:bg-[#C9B38C] hover:border-[#C9B38C] hover:text-white;
 }
 .text__body {
   @apply font-normal text-base text-white;
