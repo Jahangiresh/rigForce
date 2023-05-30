@@ -27,7 +27,9 @@ const Header = () => {
       <div className="container h-full  ">
         <div className="grid grid-cols-2 max-lg:grid-cols-3 w-full h-full">
           <div className="logo h-full flex items-center ">
-            <img className="w-[60px] h-[60px]" src={logoSvg} alt="" />
+            <Link to='/'>
+              <img className="w-[60px] h-[60px]" src={logoSvg} alt="" />
+            </Link>
           </div>
           <dir className="sm:hidden flex items-center w-full col-span-2 justify-end">
             <MenuDrawer />
