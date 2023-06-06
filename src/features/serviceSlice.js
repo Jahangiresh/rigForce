@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 import { toast } from "react-hot-toast";
+import AuthService from "../admin/services/AuthService";
 
 const initialState = {
   items: [],
@@ -26,6 +27,9 @@ export const deleteService = createAsyncThunk(
 
       return response.data;
     } catch (error) {
+      if (error.response.status === 401) {
+        AuthService.refreshToken();
+      }
       toast.error("yenidən cəhd edin!");
     }
   }
@@ -49,6 +53,9 @@ export const createService = createAsyncThunk(
         // window.location = "/adminalshn001907/branches";
       })
       .catch((err) => {
+        if (err.response.status === 401) {
+          AuthService.refreshToken();
+        }
         toast.error("yenidən cəhd edin!");
       });
     return response.data;

@@ -5,6 +5,7 @@ import axios from "axios";
 import { toast, Toaster } from "react-hot-toast";
 import { useSelector } from "react-redux";
 import { getAllServiceCategories } from "../../features/serviceCategorySlice";
+import AuthService from "../services/AuthService";
 // import { ToastContainer, toast } from "react-toastify";
 // import "react-toastify/dist/ReactToastify.css";
 
@@ -82,6 +83,9 @@ const ServicesEdit = () => {
 
         // window.location = "/admin/advocates";
       } catch (error) {
+        if (error.response.status === 401) {
+          AuthService.refreshToken();
+        }
         toast.error(error.response.data.Detail);
       }
     },

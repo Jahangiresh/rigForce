@@ -3,6 +3,7 @@ import { useFormik } from "formik";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import { toast, Toaster } from "react-hot-toast";
+import AuthService from "../services/AuthService";
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -79,6 +80,9 @@ const EditBranch = () => {
 
         window.location = "/adminalshn001907/branches";
       } catch (error) {
+        if (error.response.status === 401) {
+          AuthService.refreshToken();
+        }
         toast.error("sonra cəhd edin!");
       }
     },

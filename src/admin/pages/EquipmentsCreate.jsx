@@ -98,6 +98,7 @@ const EquipmentsCreate = () => {
         /> */}
         <input
           // other attributes...
+          multiple
           type="file"
           onChange={(e) => handleDetailImagesChange(e)}
         />

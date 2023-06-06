@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 import { toast } from "react-hot-toast";
+import AuthService from "../admin/services/AuthService";
 const initialState = {
   items: [],
   status: null,
@@ -9,27 +10,30 @@ const { accessToken } = localStorage.getItem("user")
   ? JSON.parse(localStorage.getItem("user"))
   : "";
 
-  export const deleteSetting = createAsyncThunk(
-    "setting/deleteApi",
-    async (payload) => {
-      try {
-        const response = await axios.delete(
-          `http://devserver298-001-site1.ctempurl.com/api/v1/settings/${payload}`,
-          {
-            headers: {
-              Authorization: `Bearer ${accessToken}`,
-            },
-          }
-        );
-        // window.location = "/adminalshn001907/branches";
-        toast.success("silindi");
-  
-        return response.data;
-      } catch (error) {
-        toast.error("yenidən cəhd edin!");
+export const deleteSetting = createAsyncThunk(
+  "setting/deleteApi",
+  async (payload) => {
+    try {
+      const response = await axios.delete(
+        `http://devserver298-001-site1.ctempurl.com/api/v1/settings/${payload}`,
+        {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+        }
+      );
+      // window.location = "/adminalshn001907/branches";
+      toast.success("silindi");
+
+      return response.data;
+    } catch (error) {
+      if (error.response.status === 401) {
+        AuthService.refreshToken();
       }
+      toast.error("yenidən cəhd edin!");
     }
-  );
+  }
+);
 
 export const createSetting = createAsyncThunk(
   "setting/postApi",
@@ -50,6 +54,9 @@ export const createSetting = createAsyncThunk(
         // window.location = "/adminalshn001907/branches";
       })
       .catch((err) => {
+        if (err.response.status === 401) {
+          AuthService.refreshToken();
+        }
         toast.error("yenidən cəhd edin!");
       });
     return response.data;

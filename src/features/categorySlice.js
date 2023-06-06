@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 import { toast } from "react-hot-toast";
+import AuthService from "../admin/services/AuthService";
 const initialState = {
   items: [],
   status: null,
@@ -31,8 +32,10 @@ export const createCategory = createAsyncThunk(
         toast.success("yaradıldı");
         // window.location = "/adminalshn001907/branches";
       })
-      .catch((err) => {
-        toast.error("yenidən cəhd edin!");
+      .catch(async (err) => {
+        if (err.response.status === 401) {
+          await AuthService.refreshToken();
+        }
       });
     return response.data;
   }
@@ -54,6 +57,9 @@ export const deleteCategory = createAsyncThunk(
 
       return response.data;
     } catch (error) {
+      if (error.response.status === 401) {
+        AuthService.refreshToken();
+      }
       toast.error("yenidən cəhd edin!");
     }
   }

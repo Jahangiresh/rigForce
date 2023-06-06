@@ -114,3 +114,11 @@ body::-webkit-scrollbar-thumb {
 .image-gallery-thumbnail-inner > img {
   @apply !w-full !object-contain object-center;
 }
+
+/* .homeComponent .slick-track {
+  width: 100% !important;
+} */
+/* .homeComponent .slick-track .slick-slide {
+  width: 100% !important;
+  height: 100% !important;
+} */

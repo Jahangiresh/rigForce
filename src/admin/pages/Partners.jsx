@@ -42,69 +42,80 @@ export default function Partners() {
     }).then((result) => {
       if (result.isConfirmed) {
         dispatch(deletePartner(id));
-        // window.location.reload(false);
+        window.location.reload(false);
 
-        // if (isDeleting) {
-        //   Swal.fire("Silindi!", "Data silindi.", "success");
-        // }
+        Swal.fire("Silindi!", "Data silindi.", "success");
       }
     });
   };
 
   return (
-    <TableContainer component={Paper} className="adminadvocates">
-      <div>
-        <Toaster />
-      </div>
-
-      <Table sx={{ minWidth: 650 }} aria-label="simple table">
-        <TableHead>
-          <TableRow>
-            <TableCell>Image</TableCell>
-            <TableCell align="right">name</TableCell>
-            <TableCell align="right">email</TableCell>
-            <TableCell align="right">
-              <span>edit</span>/<span>delete</span>
-            </TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
+    <div>
+      <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+          <tr>
+            <th scope="col" class="px-6 py-3">
+              name
+            </th>
+            <th scope="col" class="px-6 py-3">
+              img
+            </th>
+            <th scope="col" class="px-6 py-3">
+              actions
+            </th>
+          </tr>
+        </thead>
+        <tbody>
           {partners &&
             partners.map((partner) => (
-              <TableRow
+              <tr
                 key={partner.id}
-                sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                class="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
               >
-                <TableCell component="th" scope="row">
+                <th
+                  scope="row"
+                  class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                >
+                  {partner.urlLink}
+                </th>
+                <td class="px-6 py-4 w-44">
                   <img
-                    className="adminadvocates__img"
+                    className="adminadvocates__img object-contain w-full"
                     src={`http://devserver298-001-site1.ctempurl.com/api/v1/files?filepath=${partner.image.filePath}`}
                     alt=""
                   />
-                </TableCell>
-                <TableCell align="right">{partner.urlLink}</TableCell>
-                <TableCell align="right" className="adminadvocates__icons">
-                  <AiOutlineEdit
-                    onClick={() =>
-                      navigate(`/adminalshn001907/partners/edit/${partner.id}`)
-                    }
-                    className="edit__icons"
-                  />
-                  <AiOutlineDelete
-                    onClick={() => handleDelete(partner.id)}
-                    className="edit__icons"
-                  />
-                </TableCell>
-              </TableRow>
+                </td>
+                <td class="px-6 py-4 ">
+                  <div
+                    className="
+          flex gap-x-3 text-2xl text-black items-center h-full"
+                  >
+                    <AiOutlineEdit
+                      onClick={() =>
+                        navigate(
+                          `/adminalshn001907/partners/edit/${partner.id}`
+                        )
+                      }
+                      className="edit__icons"
+                    />
+                    <AiOutlineDelete
+                      onClick={() => handleDelete(partner.id)}
+                      className="edit__icons"
+                    />
+                  </div>
+                </td>
+              </tr>
             ))}
-        </TableBody>
-      </Table>
-      <button
-        onClick={() => navigate("/adminalshn001907/partners/create")}
-        className="adminadvocates__add"
-      >
-        partner əlavə et <AiOutlinePlusCircle className="plus__icon" />
-      </button>
-    </TableContainer>
+        </tbody>
+      </table>
+      <div className="w-full flex items-center justify-center h-20  bg-black/10 rounded-b-md">
+        <button
+          onClick={() => navigate("/adminalshn001907/partners/create")}
+          className=" text-black  text-2xl"
+        >
+          <AiOutlinePlusCircle className="plus__icon" />
+        </button>
+      </div>
+    </div>
   );
 }

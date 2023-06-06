@@ -2,8 +2,7 @@ import React from "react";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
-import logo1 from "../../assets/images/logo1.png";
-import logo2 from "../../assets/images/logo2.png";
+
 import { useSelector } from "react-redux";
 import { getAllPartners } from "../../features/partnerSlice";
 

@@ -50,65 +50,74 @@ export default function Categories() {
   };
 
   return (
-    <TableContainer component={Paper} className="adminadvocates">
-      <Table sx={{ minWidth: 650 }} aria-label="simple table">
-        <TableHead>
-          <TableRow>
-            <TableCell>Image</TableCell>
-            <TableCell align="left">title</TableCell>
-            <TableCell align="right">
-              <span>edit</span>/<span>delete</span>
-            </TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
+    <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+      <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+          <tr>
+            <th scope="col" class="px-6 py-3">
+              name
+            </th>
+            <th scope="col" class="px-6 py-3">
+              img
+            </th>
+            <th scope="col" class="px-6 py-3">
+              actions
+            </th>
+          </tr>
+        </thead>
+        <tbody>
           {categories &&
             categories.map((category) => (
-              <TableRow
+              <tr
                 key={category.id}
-                sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                class="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
               >
-                <TableCell component="th" scope="row">
-                  <img
-                    className="adminadvocates__img"
-                    src={`http://devserver298-001-site1.ctempurl.com/api/v1/files?filepath=${category.image.filePath}`}
-                    alt="img"
-                  />
-                </TableCell>
-                <TableCell align="left">
+                <th
+                  scope="row"
+                  class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                >
                   {category.title > 20
                     ? category.title.slice(0, 20) + "..."
                     : category.title}
-                </TableCell>
-                {/* <TableCell align="left">
-                  {parse(blog.body) > 25
-                    ? parse(blog.body).slice(0, 25) + "..."
-                    : parse(blog.body)}
-                </TableCell> */}
-                <TableCell align="right" className="adminadvocates__icons">
-                  <AiOutlineEdit
-                    onClick={() =>
-                      navigate(
-                        `/adminalshn001907/categories/edit/${category.id}`
-                      )
-                    }
-                    className="edit__icons"
+                </th>
+                <td class="px-6 py-4 w-44">
+                  <img
+                    className="adminadvocates__img w-full object-contain"
+                    src={`http://devserver298-001-site1.ctempurl.com/api/v1/files?filepath=${category.image.filePath}`}
+                    alt="img"
                   />
-                  <AiOutlineDelete
-                    onClick={() => handleDelete(category.id)}
-                    className="edit__icons"
-                  />
-                </TableCell>
-              </TableRow>
+                </td>
+                <td class="px-6 py-4 ">
+                  <div
+                    className="
+                  flex gap-x-3 text-2xl text-black items-center h-full"
+                  >
+                    <AiOutlineEdit
+                      onClick={() =>
+                        navigate(
+                          `/adminalshn001907/categories/edit/${category.id}`
+                        )
+                      }
+                      className="edit__icons"
+                    />
+                    <AiOutlineDelete
+                      onClick={() => handleDelete(category.id)}
+                      className="edit__icons"
+                    />
+                  </div>
+                </td>
+              </tr>
             ))}
-        </TableBody>
-      </Table>
-      <button
-        onClick={() => navigate("/adminalshn001907/categories/create")}
-        className="adminadvocates__add border"
-      >
-        Kateqoriya əlavə et <AiOutlinePlusCircle className="plus__icon" />
-      </button>
-    </TableContainer>
+        </tbody>
+      </table>
+      <div className="w-full flex items-center justify-center h-20 ">
+        <button
+          onClick={() => navigate("/adminalshn001907/categories/create")}
+          className=" text-black  text-2xl"
+        >
+          <AiOutlinePlusCircle className="plus__icon" />
+        </button>
+      </div>
+    </div>
   );
 }

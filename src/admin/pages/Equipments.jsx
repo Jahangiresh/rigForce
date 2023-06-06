@@ -50,98 +50,90 @@ export default function Equipments() {
   };
 
   return (
-    <TableContainer component={Paper} className="adminadvocates">
-      <Table sx={{ minWidth: 650 }} aria-label="simple table">
-        <TableHead>
-          <TableRow>
-            <TableCell>Image</TableCell>
-            <TableCell align="left">title</TableCell>
-            <TableCell align="left">title</TableCell>
-            <TableCell align="left">title</TableCell>
-            <TableCell align="left">title</TableCell>
-            <TableCell align="left">title</TableCell>
-            <TableCell align="left">title</TableCell>
-            <TableCell align="left">title</TableCell>
-            <TableCell align="left">title</TableCell>
-            <TableCell align="left">title</TableCell>
-            <TableCell align="left">title</TableCell>
-            <TableCell align="right">
-              <span>edit</span>/<span>delete</span>
-            </TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
+    <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+      <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+          <tr>
+            <th scope="col" class="px-6 py-3">
+              Name
+            </th>
+            <th scope="col" class="px-6 py-3">
+              Name
+            </th>
+            <th scope="col" class="px-6 py-3">
+              Position
+            </th>
+            <th scope="col" class="px-6 py-3">
+              Status
+            </th>
+            <th scope="col" class="px-6 py-3">
+              Action
+            </th>
+          </tr>
+        </thead>
+        <tbody>
           {equipments &&
             equipments.map((equipment) => (
-              <TableRow
+              <tr
                 key={equipment.id}
-                sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
               >
-                <TableCell component="th" scope="row">
+                <th
+                  scope="row"
+                  class="flex items-center justify-start px-6 py-4  text-gray-900 whitespace-nowrap dark:text-white"
+                >
                   <img
-                    className="adminadvocates__img"
+                    class="w-10 h-10 rounded-full object-contain"
                     src={`http://devserver298-001-site1.ctempurl.com/api/v1/files?filepath=${equipment.equipmentCategory.image.filePath}`}
                     alt="img"
                   />
-                </TableCell>
-                <TableCell component="th" scope="row">
-                  {equipment &&
-                    equipment.images.map((image) => (
-                      <img
-                        className="adminadvocates__img"
-                        src={`http://devserver298-001-site1.ctempurl.com/api/v1/files?filepath=${image.filePath}`}
-                        alt="img"
-                      />
-                    ))}
-                </TableCell>
-                <TableCell align="left">{equipment.title}</TableCell>
-                <TableCell align="left">{equipment.description}</TableCell>
-                <TableCell align="left">{equipment.productCode}</TableCell>
-                <TableCell align="left">{equipment.accreditedTo}</TableCell>
-                <TableCell align="left">{equipment.fittings}</TableCell>
-                <TableCell align="left">{equipment.material}</TableCell>
-                <TableCell align="left">{equipment.weight}</TableCell>
-                <TableCell align="left">{equipment.size}</TableCell>
-                <TableCell align="left">{equipment.features}</TableCell>
-                <TableCell align="left">
-                  {equipment &&
-                    equipment.files.map((file) => (
-                      <div>
-                        <a
-                          href={file.filePath}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          View File
-                        </a>
-                      </div>
-                    ))}
-                </TableCell>
-
-                <TableCell align="right" className="adminadvocates__icons">
-                  <AiOutlineEdit
-                    onClick={() =>
-                      navigate(
-                        `/adminalshn001907/equipments/edit/${equipment.id}`
-                      )
-                    }
-                    className="edit__icons"
-                  />
-                  <AiOutlineDelete
-                    onClick={() => handleDelete(equipment.id)}
-                    className="edit__icons"
-                  />
-                </TableCell>
-              </TableRow>
+                  <div class="pl-3">
+                    <div class="text-base font-semibold">{equipment.title}</div>
+                    <div class="font-normal text-gray-500">
+                      {equipment.productCode}
+                    </div>
+                  </div>
+                </th>
+                <td class="px-6 py-4">
+                  {equipment.description && equipment.description.length >= 100
+                    ? equipment.description.substring(0, 100)
+                    : equipment.description}
+                  ...
+                </td>
+                <td class="px-6 py-4">
+                  {equipment.accreditedTo && equipment.accreditedTo}
+                </td>
+                <td class="px-6 py-4">
+                  {equipment.material && equipment.material}
+                </td>
+                <td class="px-6 py-4">
+                  <div className="flex gap-x-4 text-2xl text-black">
+                    <AiOutlineEdit
+                      onClick={() =>
+                        navigate(
+                          `/adminalshn001907/equipments/edit/${equipment.id}`
+                        )
+                      }
+                      className="edit__icons"
+                    />
+                    <AiOutlineDelete
+                      onClick={() => handleDelete(equipment.id)}
+                      className="edit__icons"
+                    />
+                  </div>
+                </td>
+              </tr>
             ))}
-        </TableBody>
-      </Table>
-      <button
-        onClick={() => navigate("/adminalshn001907/equipments/create")}
-        className="adminadvocates__add border"
-      >
-        slider əlavə et <AiOutlinePlusCircle className="plus__icon" />
-      </button>
-    </TableContainer>
+        </tbody>
+      </table>
+      <div className="w-full flex items-center justify-center h-20 ">
+        <button
+          onClick={() => navigate("/adminalshn001907/equipments/create")}
+          className=" text-black  text-2xl"
+        >
+          <AiOutlinePlusCircle className="plus__icon" />
+        </button>
+      </div>
+    </div>
   );
 }

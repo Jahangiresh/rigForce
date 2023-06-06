@@ -96,7 +96,9 @@ const ProductsList = () => {
                 <div className="pImage h-60 ">
                   <img
                     className="w-full h-full object-contain"
-                    src={prodImg}
+                    src={`http://devserver298-001-site1.ctempurl.com/api/v1/files?filepath=${
+                      prod.images[0].filePath && prod.images[0].filePath
+                    }`}
                     alt="img"
                   />
                 </div>
@@ -105,9 +107,7 @@ const ProductsList = () => {
                     {prod.title}
                   </h1>
                   <p className="my-2 text-center leading-7">
-                    Our V-shaped Summit adventure harness comes with two points
-                    of connection. This collection of harnesses are colour coded
-                    for
+                    {prod.description}
                   </p>
                   <button
                     onClick={() =>
@@ -115,7 +115,7 @@ const ProductsList = () => {
                     }
                     className="btn__secondary flex items-center"
                   >
-                    See more <FiChevronRight />
+                    Daha ətraflı <FiChevronRight />
                   </button>
                 </div>
               </div>
