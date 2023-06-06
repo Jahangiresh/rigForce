@@ -42,26 +42,22 @@ export default function MenuDrawer() {
       <div className="menu__header   flex justify-end p-4">
         <RxCross2 className="menu__header__x text-xl" />
       </div>
-      <ul className="menu__ul flex flex-col items-center ">
-        {navmenu &&
-          navmenu.map((nav) => (
-            <Link key={nav.id} to={nav.path} className="mb-5 flex items-center">
-              {nav.name}
-              <FiChevronDown
-                className={`ml-2 ${!nav.hasAccordion ? "hidden" : ""}`}
-              />
-            </Link>
-          ))}
+      <ul className="menu__ul flex flex-col items-center gap-y-4 mb-4 ">
+        <Link to="/">Əsas səhifə</Link>
+        <Link to="/about">Haqqımızda</Link>
+        <Link to="/services">Xidmətlər</Link>
+        <Link to="/products">Məhsullar</Link>
+        <Link to="/contact">Əlaqə</Link>
       </ul>
       <hr />
-      <ul className="menu__ul flex justify-center gap-5 py-8">
+      {/* <ul className="menu__ul flex justify-center gap-5 py-8">
         <li onClick={() => clickLang("az")} className="menu__ul__li">
           Azərbaycan
         </li>
         <li onClick={() => clickLang("en")} className="menu__ul__li">
           English
         </li>
-      </ul>
+      </ul> */}
     </Box>
   );
 

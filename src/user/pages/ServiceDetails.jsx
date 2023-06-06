@@ -6,6 +6,7 @@ import { getAllServices } from "../../features/serviceSlice";
 import Breadcrumbs from "../components/Breadcrumbs";
 import ContactComponent from "../components/ContactComponent";
 import LogoClouds from "../components/LogoClouds";
+import Loader from "../components/Loader/Loader";
 
 const ServiceDetails = () => {
   const services = useSelector(getAllServices);
@@ -18,7 +19,9 @@ const ServiceDetails = () => {
     console.log(currentService);
   }, [services]);
 
-  return (
+  return services ? (
+    <Loader />
+  ) : (
     <>
       <Breadcrumbs title={"about"} />
 

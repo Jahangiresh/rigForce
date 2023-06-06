@@ -25,6 +25,12 @@ const sidebarNav = [
     text: "Servislər",
   },
   {
+    link: "/adminalshn001907/servicescategories",
+    section: "Servicescategories",
+    icon: <i className="bx bx-cube"></i>,
+    text: "Servis kategoriyalari",
+  },
+  {
     link: "/adminalshn001907/settings",
     section: "settings",
     icon: <i className="bx bx-cube"></i>,

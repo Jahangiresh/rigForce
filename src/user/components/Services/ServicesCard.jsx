@@ -23,13 +23,15 @@ const ServicesCard = () => {
             </div>
             <h2 className="text-white font-bold text-xl">{service.title}</h2>
             <p className="my-4 text-white text-center description-text">
-              {service.description.length > 120 ? service.description.substring(0, 119) + '...' : service.description}
+              {service.description.length > 120
+                ? service.description.substring(0, 119) + "..."
+                : service.description}
             </p>
             <button
               onClick={() => navigate(`/services/${service.id}`)}
               className="btn__secondary flex items-center"
             >
-              Read more <FiChevronRight className="ml-2" />
+              Daha ətraflı <FiChevronRight className="ml-2" />
             </button>
           </div>
         ))}

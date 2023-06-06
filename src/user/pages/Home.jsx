@@ -23,13 +23,14 @@ const Home = () => {
         />
         <div className="cover__content  w-[772px] max-sm:w-full max-sm:px-1 ">
           <h1 className="font-bold text-white text-[38px] max-sm:text-[28px] max-sm:leading-2">
-            {/* Lorem ipsum dolor sit amet consectetur. Amet donec leo sit erat.
-            <span className="text__yellow">Eleifend risus</span> diam cursus
-            dictum est */}
-            {settings && settings[6]?.value}
+            {settings &&
+              settings.find((s) => s.key === "banner1") &&
+              settings.find((s) => s.key === "banner1").value}
           </h1>
           <p className=" text-white sm:text-xl mt-6 max-sm:leading-8">
-            {settings && settings[7]?.value}
+            {settings &&
+              settings.find((s) => s.key === "banner2") &&
+              settings.find((s) => s.key === "banner2").value}
           </p>
         </div>
       </div>

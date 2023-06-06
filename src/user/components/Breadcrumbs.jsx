@@ -14,7 +14,7 @@ const Breadcrumbs = ({ title }) => {
         <h1 className=" font-bold text-white text-[60px]">{title}</h1>
         <p className="text-white flex gap-x-3">
           <Link to="/" className="underline">
-            Home
+            Əsas səhifə
           </Link>{" "}
           <img src={linesvg} alt="" /> {title}
         </p>

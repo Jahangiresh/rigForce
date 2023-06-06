@@ -2,9 +2,13 @@ import React from "react";
 import mapsvg from "../../assets/images/mapVector.svg";
 import { FiChevronRight } from "react-icons/fi";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { getAllSettings } from "../../features/settingSlice";
 
 const ContactComponent = () => {
   const navigate = useNavigate();
+  const settings = useSelector(getAllSettings);
+
   return (
     <div className="bg__blue h-[282px] relative">
       <img
@@ -13,17 +17,17 @@ const ContactComponent = () => {
         alt=""
       />
       <div className="content flex flex-col justify-center h-full items-center pb-20">
-        <h2 className="text-white font-bold text-3xl ">Contact Us</h2>
+        <h2 className="text-white font-bold text-3xl "> Bizimlə əlaqə</h2>
         <p className="my-4 text-white leading-8  md:w-[720px] text-center ">
-          Lorem ipsum dolor sit amet consectetur. Amet donec leo sit erat.
-          Eleifend risus diam cursus dictum est Lorem ipsum dolor sit amet
-          consectetur. Amet donec leo sit erat. Eleifend
+          {settings &&
+            settings.find((s) => s.key === "elaqe") &&
+            settings.find((s) => s.key === "elaqe").value}
         </p>
         <button
           onClick={() => navigate("/contact")}
           className="btn__main flex items-center !absolute bottom-10 hover:bg-[#fff] "
         >
-          Contact us
+          Bizimlə əlaqə
         </button>
       </div>
     </div>

@@ -30,7 +30,7 @@ const ProductBanner = () => {
                 onClick={() => navigate(`/products/${category.id}`)}
                 className="btn__secondary flex items-center w-44"
               >
-                Read more <FiChevronRight className="ml-2" />
+                Daha çox <FiChevronRight className="ml-2" />
               </button>
             </div>
           </div>

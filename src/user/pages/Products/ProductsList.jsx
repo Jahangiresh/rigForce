@@ -9,15 +9,16 @@ import { useEffect } from "react";
 import { toast } from "react-hot-toast";
 import { useSelector } from "react-redux";
 import { getAllEquipments } from "../../../features/EquipmentSlice";
+import Loader from "../../components/Loader/Loader";
 
 const reducer = (state, action) => {
   switch (action.type) {
     case "FETCH_REQUEST":
-      return { ...state, loading: true };
+      return { ...state, loader: true };
     case "FETCH_SUCCESS":
-      return { ...state, prods: action.payload, loading: false };
+      return { ...state, prods: action.payload, loader: false };
     case "FETCH_FAIL":
-      return { ...state, loading: false, error: action.payload };
+      return { ...state, loader: false, error: action.payload };
     default:
       return state;
   }
@@ -29,7 +30,7 @@ const ProductsList = () => {
   const [{ error, loader, prods }, dispatch] = useReducer(reducer, {
     prods: [],
     error: false,
-    loader: false,
+    loader: true,
   });
 
   const params = useParams();
@@ -49,15 +50,17 @@ const ProductsList = () => {
           }
         );
         dispatch({ type: "FETCH_SUCCESS", payload: data });
-      } catch (error) { }
+      } catch (error) {}
       dispatch({ type: "FETCH_FAIL" });
       toast.error("Bu kateqoriya üzrə məhsul tapılmadı");
     };
     getProds();
   }, [prodCategory]);
-  return (
+  return loader ? (
+    <Loader />
+  ) : (
     <>
-      <Breadcrumbs title={"Prods--zirt pirt"} />
+      <Breadcrumbs title={"Məhsullar"} />
       <div className="container">
         <div className="grid grid-cols-3 max-sm:grid-cols-1 max-lg:grid-cols-2  py-10 gap-6 ">
           {prods.length == 0 ? (

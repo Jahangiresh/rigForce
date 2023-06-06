@@ -12,6 +12,9 @@ import settingSlice, { settingFetch } from "./features/settingSlice";
 import sliderSlice, { sliderFetch } from "./features/sliderSlice";
 import contactSlice, { contactFetch } from "./features/contactSlice";
 import EquipmentSlice, { equipmentFetch } from "./features/EquipmentSlice";
+import serviceCategorySlice, {
+  serviceCategoryFetch,
+} from "./features/serviceCategorySlice";
 const store = configureStore({
   reducer: {
     categories: categorySlice,
@@ -21,6 +24,7 @@ const store = configureStore({
     slider: sliderSlice,
     contact: contactSlice,
     equipment: EquipmentSlice,
+    serviceCategories: serviceCategorySlice,
   },
 });
 store.dispatch(categoryFetch());
@@ -30,6 +34,7 @@ store.dispatch(settingFetch());
 store.dispatch(sliderFetch());
 store.dispatch(contactFetch());
 store.dispatch(equipmentFetch());
+store.dispatch(serviceCategoryFetch());
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

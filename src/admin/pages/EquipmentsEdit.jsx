@@ -13,7 +13,7 @@ const reducer = (state, action) => {
     case "FETCH_SUCCES":
       return { ...state, equipment: action.payload, loader: false };
     case "FETCH_FAIL":
-      return { ...state, error: true };
+      return { ...state, error: true, loader: false };
     default:
       return state;
   }

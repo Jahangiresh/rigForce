@@ -21,6 +21,7 @@ import { useSelector } from "react-redux";
 import { getAllServices } from "../features/serviceSlice.js";
 import { useEffect } from "react";
 import ScrollToTop from "../user/components/ScrollToTop.js";
+import ServiceCategories from "../user/pages/ServiceCategories.jsx";
 const Layout = () => {
   return (
     <div className="layout__app">
@@ -32,7 +33,8 @@ const Layout = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
-          <Route path="/services" element={<Services />} />
+          <Route path="/services/:category" element={<Services />} />
+          <Route path="/services" element={<ServiceCategories />} />
           {/* products  */}
           <Route path="/products" element={<Products />} />
           <Route path="/products/:category" element={<ProductsList />} />

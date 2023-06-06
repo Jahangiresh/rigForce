@@ -8,9 +8,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { getAllCategories, getStatus } from "../../../features/categorySlice";
 import HeaderLangs from "./HeaderLangs";
 import { useTranslation } from "react-i18next";
+import { getAllServiceCategories } from "../../../features/serviceCategorySlice";
 const Header = () => {
   const navigate = useNavigate();
   const categories = useSelector(getAllCategories);
+  const serviceCategories = useSelector(getAllServiceCategories);
   const status = useSelector(getStatus);
   const dispatch = useDispatch();
 
@@ -18,6 +20,11 @@ const Header = () => {
     // e.stopPropagation();
     // console.log(title);
     navigate(`/products/${catId}`);
+  };
+  const navigateHandler2 = (scatId) => {
+    // e.stopPropagation();
+    // console.log(title);
+    navigate(`/services/${scatId}`);
   };
   // const s = "salam";
   const { t } = useTranslation();
@@ -27,7 +34,7 @@ const Header = () => {
       <div className="container h-full  ">
         <div className="grid grid-cols-2 max-lg:grid-cols-3 w-full h-full">
           <div className="logo h-full flex items-center ">
-            <Link to='/'>
+            <Link to="/">
               <img className="w-[60px] h-[60px]" src={logoSvg} alt="" />
             </Link>
           </div>
@@ -53,6 +60,25 @@ const Header = () => {
                 to="/services"
               >
                 {t("Xidmətlər")}
+                <FiChevronDown className={`ml-2 `} />
+                <div
+                  className={` border-t-blue-500 absolute w-max px-5 py-3  h-max  border bg-white border-[#e3e3e3] top-[100%] left-0 hidden group-hover:block hover:!block z-20`}
+                >
+                  <ul>
+                    {serviceCategories &&
+                      serviceCategories.map((scategory) => (
+                        <Link
+                          key={scategory.id}
+                          // onClick={(e) => navigateHandler2(scategory.id)}
+                          to={`/services/${scategory.id}`}
+                          className="transition-all  duration-200 hover:text-[#3a85ad] flex flex-col  mb-3 cursor-pointer"
+                        >
+                          {scategory.id}
+                          {scategory.title}
+                        </Link>
+                      ))}
+                  </ul>
+                </div>
               </Link>
               <li className="flex items-center relative  h-full group ">
                 <Link to="/products">{t("Məhsullar")}</Link>

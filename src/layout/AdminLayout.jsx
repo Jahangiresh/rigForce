@@ -23,6 +23,10 @@ import SlidersCreate from "../admin/pages/SlidersCreate";
 import SlidersEdit from "../admin/pages/SlidersEdit";
 import Equipments from "../admin/pages/Equipments";
 import EquipmentsCreate from "../admin/pages/EquipmentsCreate";
+import ServiceCategories from "../admin/pages/ServiceCategories";
+import ServiceCategoryCreate from "../admin/pages/ServiceCategoryCreate";
+import ServiceCategoriesEdit from "../admin/pages/ServiceCategoriesEdit";
+
 import EquipmentsEdit from "../admin/pages/EquipmentsEdit";
 
 const AdminLayout = () => {
@@ -96,6 +100,18 @@ const AdminLayout = () => {
               <Route
                 path="/adminalshn001907/partners/edit/:id"
                 element={<PartnersEdit />}
+              />
+              <Route
+                path="/adminalshn001907/servicescategories"
+                element={<ServiceCategories />}
+              />
+              <Route
+                path="/adminalshn001907/servicescategories/create"
+                element={<ServiceCategoryCreate />}
+              />
+              <Route
+                path="/adminalshn001907/servicescategories/edit/:id"
+                element={<ServiceCategoriesEdit />}
               />
               <Route path="/adminalshn001907/services" element={<Services />} />
               <Route

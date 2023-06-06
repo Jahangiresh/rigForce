@@ -8,19 +8,21 @@ import { toast } from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
 import { createContact } from "../../features/contactSlice";
 import { getAllSettings } from "../../features/settingSlice";
+import Loader from "../components/Loader/Loader";
 
 const Contact = () => {
   const dispatch = useDispatch();
-  const settings = useSelector(getAllSettings)
+  const settings = useSelector(getAllSettings);
   useEffect(() => {
-
-    console.log('setting', settings);
+    console.log("setting", settings);
     // dispatch(settingFetch())
-  }, [])
+  }, []);
 
-  return (
+  return !settings ? (
+    <Loader />
+  ) : (
     <>
-      <Breadcrumbs title="Contact" />
+      <Breadcrumbs title="Əlaqə" />
 
       <div className="container !my-12">
         <Formik
@@ -39,22 +41,31 @@ const Contact = () => {
           <Form className="grid lg:grid-cols-3 grid-cols-1">
             <div className="flex w-full lg:flex-col gap-y-4 justify-center max-lg:mb-10 max-lg:gap-x-2 max-sm:flex-col">
               <div className="border border-[#e3e3e3] shadow-lg px-10 py-5 lg:mr-10">
-                <h3 className="font-bold text__black text-xl mb-5">
-                  Phone number:
-                </h3>
-                <p>+994 50 500 50 50</p>
+                <h3 className="font-bold text__black text-xl mb-5">Telefon:</h3>
+                <p>
+                  {" "}
+                  {settings &&
+                    settings.find((s) => s.key === "telefon1") &&
+                    settings.find((s) => s.key === "telefon1").value}
+                </p>
               </div>
               <div className="border border-[#e3e3e3] shadow-lg px-10 py-5 lg:mr-10">
-                <h3 className="font-bold text__black text-xl mb-5">
-                  Email address:
-                </h3>
-                <p>example@dd.com</p>
+                <h3 className="font-bold text__black text-xl mb-5">Email:</h3>
+                <p>
+                  {" "}
+                  {settings &&
+                    settings.find((s) => s.key === "mail") &&
+                    settings.find((s) => s.key === "mail").value}
+                </p>
               </div>
               <div className="border border-[#e3e3e3] shadow-lg px-10 py-5 lg:mr-10">
-                <h3 className="font-bold text__black text-xl mb-5">
-                  Email address:
-                </h3>
-                <p>Azərbaycan, Bakı, Həsən Əliyev küç, 49</p>
+                <h3 className="font-bold text__black text-xl mb-5">Ünvan:</h3>
+                <p>
+                  {" "}
+                  {settings &&
+                    settings.find((s) => s.key === "unvan") &&
+                    settings.find((s) => s.key === "unvan").value}
+                </p>
               </div>
             </div>
             <div className="sm:col-span-2 max-sm:mb-6 sm:grid grid-cols-2 gap-6">
@@ -63,7 +74,7 @@ const Contact = () => {
                   className="text__black font-bold mb-2"
                   htmlFor="fullName"
                 >
-                  Full name
+                  Ad & Soyad
                 </label>
                 <Field
                   type="text"
@@ -88,7 +99,7 @@ const Contact = () => {
                   className="text__black font-bold mb-2"
                   htmlFor="phoneNumber"
                 >
-                  Phone number
+                  Telefon
                 </label>
                 <Field
                   type="text"
@@ -99,7 +110,7 @@ const Contact = () => {
               </div>
               <div className="flex flex-col">
                 <label className="text__black font-bold mb-2" htmlFor="subject">
-                  Subject
+                  Mövzu
                 </label>
                 <Field
                   type="text"
@@ -110,7 +121,7 @@ const Contact = () => {
               </div>
               <div className="col-span-2 flex flex-col">
                 <label className="text__black font-bold mb-2" htmlFor="message">
-                  Message
+                  Mesaj
                 </label>
                 <Field
                   as="textarea"
@@ -122,7 +133,7 @@ const Contact = () => {
                 />
                 <div className="rail !w-full flex justify-end mt-3">
                   <button type="submit" className="btn__main !py-3 w-max">
-                    Submit
+                    Göndər
                   </button>
                 </div>
               </div>

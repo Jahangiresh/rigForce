@@ -51,7 +51,7 @@ const LogoClouds = () => {
     <div className="h-[219px] py-10 overflow-y-hidden">
       <div className="container">
         <h1 className="text-center text__black font-bold text-[28px] ">
-          Our partners
+          Tərəfdaşlar
         </h1>
         <Slider {...settings} className="h-full mt-10">
           {logos &&

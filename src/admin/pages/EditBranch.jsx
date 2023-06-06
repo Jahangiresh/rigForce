@@ -11,7 +11,7 @@ const reducer = (state, action) => {
     case "FETCH_SUCCES":
       return { ...state, branch: action.payload, loader: false };
     case "FETCH_FAIL":
-      return { ...state, error: true };
+      return { ...state, error: true, loader: false };
     default:
       return state;
   }
@@ -41,49 +41,48 @@ const EditBranch = () => {
     getBranch();
   }, []);
 
-  const formik = useFormik(
-    {
-      enableReinitialize: true,
-      initialValues: {
-        name: branch && branch.name,
-        email: branch && branch.email,
-        telephone: branch && branch.telephone,
-        image: branch && branch.image,
-        website: branch && branch.website,
-        address: branch && branch.address,
-      },
+  const formik = useFormik({
+    enableReinitialize: true,
+    initialValues: {
+      name: branch && branch.name,
+      email: branch && branch.email,
+      telephone: branch && branch.telephone,
+      image: branch && branch.image,
+      website: branch && branch.website,
+      address: branch && branch.address,
+    },
 
-      onSubmit: async (values) => {
-        const { token } = localStorage.getItem("user")
-          ? JSON.parse(localStorage.getItem("user"))
-          : "";
+    onSubmit: async (values) => {
+      const { token } = localStorage.getItem("user")
+        ? JSON.parse(localStorage.getItem("user"))
+        : "";
 
-        try {
-          await axios.put(
-            `https://alishancompany.az/api/branch/${id}`,
-            {
-              name: values.name,
-              email: values.email,
-              telephone: values.telephone,
-              website: values.website,
-              image: values.image,
-              address: values.address,
+      try {
+        await axios.put(
+          `https://alishancompany.az/api/branch/${id}`,
+          {
+            name: values.name,
+            email: values.email,
+            telephone: values.telephone,
+            website: values.website,
+            image: values.image,
+            address: values.address,
+          },
+          {
+            headers: {
+              "Content-Type": "multipart/form-data",
+              Authorization: `Bearer ${token}`,
             },
-            {
-              headers: {
-                "Content-Type": "multipart/form-data",
-                Authorization: `Bearer ${token}`,
-              },
-            }
-          );
-          toast.success("filial dəyişildi");
+          }
+        );
+        toast.success("filial dəyişildi");
 
-          window.location = "/adminalshn001907/branches";
-        } catch (error) {
-          toast.error("sonra cəhd edin!");
-        }
-      },
-    });
+        window.location = "/adminalshn001907/branches";
+      } catch (error) {
+        toast.error("sonra cəhd edin!");
+      }
+    },
+  });
   return (
     <div>
       <div className="createadvocates">
@@ -123,15 +122,11 @@ const EditBranch = () => {
             id="email"
             name="email"
             type="email"
-
             onChange={formik.handleChange}
             // value={formik.values.email}
             defaultValue={branch && branch.email}
           />{" "}
-          <label
-            className="createadvocates__forms__label"
-            htmlFor="telephone"
-          >
+          <label className="createadvocates__forms__label" htmlFor="telephone">
             nömrə
           </label>
           <input
@@ -154,10 +149,7 @@ const EditBranch = () => {
             onChange={formik.handleChange}
             defaultValue={branch && branch.address}
           />
-          <label
-            className="createadvocates__forms__label"
-            htmlFor="website"
-          >
+          <label className="createadvocates__forms__label" htmlFor="website">
             website
           </label>
           <input

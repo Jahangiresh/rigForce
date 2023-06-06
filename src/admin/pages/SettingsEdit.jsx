@@ -106,8 +106,8 @@ const SettingsEdit = () => {
           <input
             className="createadvocates__forms__input"
             id="title"
-            disabled
             name="key"
+            disabled
             type="text"
             onChange={formik.handleChange}
             // value={formik.values.firstName}

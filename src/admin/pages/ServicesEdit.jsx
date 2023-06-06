@@ -3,6 +3,8 @@ import { useFormik } from "formik";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import { toast, Toaster } from "react-hot-toast";
+import { useSelector } from "react-redux";
+import { getAllServiceCategories } from "../../features/serviceCategorySlice";
 // import { ToastContainer, toast } from "react-toastify";
 // import "react-toastify/dist/ReactToastify.css";
 
@@ -27,7 +29,7 @@ const ServicesEdit = () => {
   });
   const params = useParams();
   const id = params.id;
-
+  const categories = useSelector(getAllServiceCategories);
   useEffect(() => {
     const getCategory = async () => {
       dispatch({ type: "FETCH_REQ" });
@@ -52,6 +54,7 @@ const ServicesEdit = () => {
       description: service.description,
       iconImage: service.iconImage,
       detailImages: service.detailImages,
+      providedServiceCategoryId: service.providedServiceCategoryId,
     },
     onSubmit: async (values) => {
       const { accessToken } = localStorage.getItem("user")
@@ -66,6 +69,7 @@ const ServicesEdit = () => {
             description: values.description,
             iconImage: values.iconImage,
             detailImages: values.detailImages,
+            providedServiceCategoryId: values.providedServiceCategoryId,
           },
           {
             headers: {
@@ -139,6 +143,17 @@ const ServicesEdit = () => {
             // value={formik.values.firstName}
             defaultValue={service.description}
           />
+          <select
+            className="createadvocates__forms__input"
+            id="providedServiceCategoryId"
+            name="providedServiceCategoryId"
+            type="text"
+            onChange={formik.handleChange}
+            defaultValue={formik.values.providedServiceCategoryId}
+          >
+            {categories &&
+              categories.map((c) => <option value={c.id}>{c.title}</option>)}
+          </select>
           <button className="createadvocates__forms__button" type="submit">
             Submit
           </button>

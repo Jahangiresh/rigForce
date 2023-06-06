@@ -251,7 +251,7 @@ const EquipmentsCreate = () => {
           defaultValue={formik.values.features}
         />
         <label className="createadvocates__forms__label" htmlFor="name">
-          equipmentCategoryId
+          equipment Category
         </label>
         <select
           className="createadvocates__forms__input"
