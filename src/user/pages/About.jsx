@@ -17,25 +17,9 @@ const About = () => {
         <div className="mb-12">
           <h1 className="text__black font-bold text-[28px] mb-3">Rig Force</h1>
           <p className="leading-8">
-            Lorem ipsum dolor sit amet consectetur. Amet donec leo sit erat.
-            Eleifend risus diam cursus dictum est Lorem ipsum dolor sit amet
-            consectetur. Amet donec leo sit erat. Eleifend risus diam cursus
-            dictum est Lorem ipsum dolor sit amet consectetur. Amet donec leo
-            sit erat. Eleifend risus diam cursus dictum est Lorem ipsum dolor
-            sit amet consectetur. Amet donec leo sit erat. Eleifend risus diam
-            cursus dictum estLorem ipsum dolor sit amet consectetur. Amet donec
-            leo sit erat. Eleifend risus diam cursus dictum est Lorem ipsum
-            dolor sit amet consectetur. Amet donec leo sit erat. Eleifend risus
-            diam cursus dictum est Lorem ipsum dolor sit amet consectetur. Amet
-            donec leo sit erat. Eleifend risus diam cursus dictum est Lorem
-            ipsum dolor sit amet consectetur. Amet donec leo sit erat. Eleifend
-            risus diam cursus dictum est Lorem ipsum dolor sit amet consectetur.
-            Amet donec leo sit erat. Eleifend risus diam cursus dictum est Lorem
-            ipsum dolor sit amet consectetur. Amet donec leo sit erat. Eleifend
-            risus diam cursus dictum estLorem ipsum dolor sit amet consectetur.
-            Amet donec leo sit erat. Eleifend risus diam cursus dictum est Lorem
-            ipsum dolor sit amet consectetur. Amet donec leo sit erat. Eleifend
-            risus diam cursus dictum estLorem ipsum dolor sit amet consectetur
+            {settings &&
+              settings.find((s) => s.key === "haqqimizda") &&
+              settings.find((s) => s.key === "haqqimizda").value}
           </p>
         </div>
         <div className="mb-12">
@@ -43,25 +27,9 @@ const About = () => {
             Görüşlərimiz & Məqsədimiz
           </h1>
           <p className="leading-8">
-            Lorem ipsum dolor sit amet consectetur. Amet donec leo sit erat.
-            Eleifend risus diam cursus dictum est Lorem ipsum dolor sit amet
-            consectetur. Amet donec leo sit erat. Eleifend risus diam cursus
-            dictum est Lorem ipsum dolor sit amet consectetur. Amet donec leo
-            sit erat. Eleifend risus diam cursus dictum est Lorem ipsum dolor
-            sit amet consectetur. Amet donec leo sit erat. Eleifend risus diam
-            cursus dictum estLorem ipsum dolor sit amet consectetur. Amet donec
-            leo sit erat. Eleifend risus diam cursus dictum est Lorem ipsum
-            dolor sit amet consectetur. Amet donec leo sit erat. Eleifend risus
-            diam cursus dictum est Lorem ipsum dolor sit amet consectetur. Amet
-            donec leo sit erat. Eleifend risus diam cursus dictum est Lorem
-            ipsum dolor sit amet consectetur. Amet donec leo sit erat. Eleifend
-            risus diam cursus dictum est Lorem ipsum dolor sit amet consectetur.
-            Amet donec leo sit erat. Eleifend risus diam cursus dictum est Lorem
-            ipsum dolor sit amet consectetur. Amet donec leo sit erat. Eleifend
-            risus diam cursus dictum estLorem ipsum dolor sit amet consectetur.
-            Amet donec leo sit erat. Eleifend risus diam cursus dictum est Lorem
-            ipsum dolor sit amet consectetur. Amet donec leo sit erat. Eleifend
-            risus diam cursus dictum estLorem ipsum dolor sit amet consectetur
+            {settings &&
+              settings.find((s) => s.key === "gorushlerimiz") &&
+              settings.find((s) => s.key === "gorushlerimiz").value}
           </p>
         </div>
       </div>

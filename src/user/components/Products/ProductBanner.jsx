@@ -19,8 +19,8 @@ const ProductBanner = () => {
               src={`http://devserver298-001-site1.ctempurl.com/api/v1/files?filepath=${category.image.filePath}`}
               alt="banner"
             />
-            <div className="content flex flex-col justify-center   h-full">
-              <h2 className="text-white font-bold text-2xl ">
+            <div className="content flex flex-col justify-center items-center  h-full">
+              <h2 className="text-white font-bold text-2xl text-center">
                 {category.title}{" "}
               </h2>
               <p className="my-4 text-white lg:leading-2 ">

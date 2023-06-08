@@ -27,12 +27,12 @@ const ServicesCard = () => {
                 ? service.description.substring(0, 119) + "..."
                 : service.description}
             </p>
-            <button
+            {/* <button
               onClick={() => navigate(`/services/${service.id}`)}
               className="btn__secondary flex items-center"
             >
               Daha ətraflı <FiChevronRight className="ml-2" />
-            </button>
+            </button> */}
           </div>
         ))}
     </div>
