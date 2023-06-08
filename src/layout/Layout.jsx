@@ -22,6 +22,7 @@ import { getAllServices } from "../features/serviceSlice.js";
 import { useEffect } from "react";
 import ScrollToTop from "../user/components/ScrollToTop.js";
 import ServiceCategories from "../user/pages/ServiceCategories.jsx";
+import NotFound from "../user/pages/NotFound.jsx";
 const Layout = () => {
   return (
     <div className="layout__app">
@@ -44,6 +45,7 @@ const Layout = () => {
           {/* products  */}
 
           <Route path="/contact" element={<Contact />} />
+          <Route path="/*" element={<NotFound />} />
         </Routes>
         <Footer />
       </BrowserRouter>
