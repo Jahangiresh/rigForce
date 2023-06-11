@@ -48,7 +48,7 @@ const Footer = () => {
                     e.key == 'Tel2' && <li className="text-white">Tel: +994 50 500 50 50</li> : null
                 })} */}
               <p className="text-justify text-white mt-3 leading-7">
-                Adress:{" "}
+                {t("Ünvan")}:{" "}
                 {settings &&
                   settings.find((s) => s.key === "unvan") &&
                   settings.find((s) => s.key === "unvan").value}
@@ -57,7 +57,7 @@ const Footer = () => {
                 Mobil: {settings && settings[3]?.value}
               </li> */}
               <li className="text-white">
-                Tel:{" "}
+                {t("Telefon")}:{" "}
                 {settings &&
                   settings.find((s) => s.key === "telefon1") &&
                   settings.find((s) => s.key === "telefon1").value}
