@@ -6,9 +6,10 @@ const Loader = () => {
       <div class="loader">
         <p>Rig Force</p>
         <div class="words">
-          <span class="word">xidmətlər</span>
-          <span class="word">tikinti</span>
-          <span class="word">texnika</span>
+          <span class="word">keyfiyyət</span>
+          <span class="word">innovasiya</span>
+          <span class="word">davamlılıq</span>
+          <span class="word">inkşaf</span>
         </div>
       </div>
     </div>

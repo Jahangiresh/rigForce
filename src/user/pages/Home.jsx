@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import coverHomeSvg from "../../assets/images/coverhome.svg";
 import { getAllSettings } from "../../features/settingSlice";
-import { getAllSliders } from "../../features/sliderSlice";
+import { getAllSliders, getStatus } from "../../features/sliderSlice";
 import AboutComponent from "../components/AboutComponent";
 import ContactComponent from "../components/ContactComponent";
 import Loader from "../components/Loader/Loader";
@@ -16,6 +16,7 @@ import { useEffect } from "react";
 const Home = () => {
   const sets = useSelector(getAllSettings);
   const sliders = useSelector(getAllSliders);
+  const status = useSelector(getStatus);
   useEffect(() => {
     console.log(sliders, "slider");
   }, []);
@@ -29,7 +30,7 @@ const Home = () => {
     autoplay: true,
     autoplaySpeed: 7000,
   };
-  return !sets ? (
+  return status == "pending" ? (
     <Loader />
   ) : (
     <div className="homeComponent">

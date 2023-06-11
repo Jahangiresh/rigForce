@@ -29,7 +29,7 @@ const ServiceCategories = () => {
                 src={`https://rigforce.az/api/v1/files?filepath=${category.image.filePath}`}
                 alt="banner"
               />
-              <div className="content flex flex-col justify-center   h-full">
+              <div className="content flex flex-col justify-center items-center  h-full">
                 <h2 className="text-white font-bold text-2xl ">
                   {category.title}{" "}
                 </h2>
@@ -38,7 +38,7 @@ const ServiceCategories = () => {
                 </p>
                 <button
                   onClick={() => navigate(`/services/${category.id}`)}
-                  className="btn__secondary flex items-center w-44"
+                  className="btn__secondary flex items-center justify-center w-44"
                 >
                   Daha ətraflı <FiChevronRight className="ml-2" />
                 </button>

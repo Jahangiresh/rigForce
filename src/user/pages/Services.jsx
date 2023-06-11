@@ -85,7 +85,7 @@ const Services = () => {
                 <span class="sr-only">Info</span>
                 <div>
                   <span class="font-medium">Diqqət!</span> Bu kateqoriya üzrə
-                  məhsul tapılmadı
+                  xidmət tapılmadı
                 </div>
               </div>
             </div>
