@@ -39,7 +39,7 @@ const ProductDetails = () => {
       dispatch({ type: "FETCH_REQUEST" });
 
       const { data } = await axios.get(
-        `http://devserver298-001-site1.ctempurl.com/api/v1/equipments/${prodId}`
+        `https://rigforce.az/api/v1/equipments/${prodId}`
       );
 
       dispatch({ type: "FETCH_SUCCESS", payload: data });
@@ -57,12 +57,9 @@ const ProductDetails = () => {
   if (prodDetails && prodDetails.images && prodDetails.images.length > 0) {
     const updatedImages = prodDetails.images.map((image) => {
       return {
-        original:
-          "http://devserver298-001-site1.ctempurl.com/api/v1/files?filepath=" +
-          image.filePath,
+        original: "https://rigforce.az/api/v1/files?filepath=" + image.filePath,
         thumbnail:
-          "http://devserver298-001-site1.ctempurl.com/api/v1/files?filepath=" +
-          image.filePath,
+          "https://rigforce.az/api/v1/files?filepath=" + image.filePath,
       };
     });
 
@@ -128,7 +125,7 @@ const ProductDetails = () => {
               <li>
                 <a
                   className="btn__secondary"
-                  href={`http://devserver298-001-site1.ctempurl.com/api/v1/files?filepath=${
+                  href={`https://rigforce.az/api/v1/files?filepath=${
                     prodDetails.files && prodDetails.files[0].filePath
                   }`}
                   download
@@ -139,7 +136,7 @@ const ProductDetails = () => {
               <li>
                 <a
                   className="btn__secondary"
-                  href={`http://devserver298-001-site1.ctempurl.com/api/v1/files?filepath=${
+                  href={`https://rigforce.az/api/v1/files?filepath=${
                     prodDetails.files && prodDetails.files[1].filePath
                   }`}
                   download
@@ -150,7 +147,7 @@ const ProductDetails = () => {
               <li>
                 <a
                   className="btn__secondary"
-                  href={`http://devserver298-001-site1.ctempurl.com/api/v1/files?filepath=${
+                  href={`https://rigforce.az/api/v1/files?filepath=${
                     prodDetails.files && prodDetails.files[2].filePath
                   }`}
                   download

@@ -68,7 +68,7 @@ export default function Sliders() {
                 <TableCell component="th" scope="row">
                   <img
                     className="adminadvocates__img"
-                    src={`http://devserver298-001-site1.ctempurl.com/api/v1/files?filepath=${slider.image.filePath}`}
+                    src={`https://rigforce.az/api/v1/files?filepath=${slider.image.filePath}`}
                     alt="img"
                   />
                 </TableCell>

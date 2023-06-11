@@ -15,7 +15,7 @@ export const deleteSlider = createAsyncThunk(
   async (payload) => {
     try {
       const response = await axios.delete(
-        `http://devserver298-001-site1.ctempurl.com/api/v1/sliders/${payload}`,
+        `https://rigforce.az/api/v1/sliders/${payload}`,
         {
           headers: {
             Authorization: `Bearer ${accessToken}`,
@@ -38,16 +38,12 @@ export const createSlider = createAsyncThunk(
   "slider/postApi",
   async (payload) => {
     const response = await axios
-      .post(
-        `http://devserver298-001-site1.ctempurl.com/api/v1/sliders`,
-        payload,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-            Authorization: `Bearer ${accessToken}`,
-          },
-        }
-      )
+      .post(`https://rigforce.az/api/v1/sliders`, payload, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+          Authorization: `Bearer ${accessToken}`,
+        },
+      })
       .then((res) => {
         toast.success("yaradıldı");
         // window.location = "/adminalshn001907/branches";
@@ -62,15 +58,12 @@ export const createSlider = createAsyncThunk(
   }
 );
 export const sliderFetch = createAsyncThunk("slider/sliderFetch", async () => {
-  const resp = await axios.get(
-    "http://devserver298-001-site1.ctempurl.com/api/v1/sliders",
-    {
-      params: {
-        pageNumber: 1,
-        pageSize: 100,
-      },
-    }
-  );
+  const resp = await axios.get("https://rigforce.az/api/v1/sliders", {
+    params: {
+      pageNumber: 1,
+      pageSize: 100,
+    },
+  });
   return resp?.data;
 });
 

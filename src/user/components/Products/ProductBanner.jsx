@@ -16,7 +16,7 @@ const ProductBanner = () => {
           <div className="relative  h-[346px]  w-full flex  justify-center flex-col px-24 max-lg:px-10 ">
             <img
               className="absolute object-cover !w-full h-full top-0 left-0 -z-10"
-              src={`http://devserver298-001-site1.ctempurl.com/api/v1/files?filepath=${category.image.filePath}`}
+              src={`https://rigforce.az/api/v1/files?filepath=${category.image.filePath}`}
               alt="banner"
             />
             <div className="content flex flex-col justify-center   h-full">

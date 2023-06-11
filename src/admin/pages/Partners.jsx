@@ -81,7 +81,7 @@ export default function Partners() {
                 <td class="px-6 py-4 w-44">
                   <img
                     className="adminadvocates__img object-contain w-full"
-                    src={`http://devserver298-001-site1.ctempurl.com/api/v1/files?filepath=${partner.image.filePath}`}
+                    src={`https://rigforce.az/api/v1/files?filepath=${partner.image.filePath}`}
                     alt=""
                   />
                 </td>

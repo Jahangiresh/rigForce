@@ -10,7 +10,7 @@ const Breadcrumbs = ({ title }) => {
     <div className="h-[400px] relative w-full flex  items-center ">
       <img
         className="w-full h-full absolute top-0 left-0 -z-10 object-cover object-left "
-        src={`http://devserver298-001-site1.ctempurl.com/api/v1/files?filepath=${
+        src={`https://rigforce.az/api/v1/files?filepath=${
           settings &&
           settings.find((s) => s.key === "breadcrumb") &&
           settings.find((s) => s.key === "breadcrumb").image.filePath

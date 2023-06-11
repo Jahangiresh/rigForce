@@ -35,7 +35,7 @@ const PartnersEdit = () => {
 
       try {
         const resp = await axios.get(
-          `http://devserver298-001-site1.ctempurl.com/api/v1/partners/${id}`
+          `https://rigforce.az/api/v1/partners/${id}`
         );
 
         dispatch({ type: "FETCH_SUCCES", payload: resp.data });
@@ -59,7 +59,7 @@ const PartnersEdit = () => {
 
       try {
         await axios.put(
-          `http://devserver298-001-site1.ctempurl.com/api/v1/partners/${id}`,
+          `https://rigforce.az/api/v1/partners/${id}`,
           {
             urlLink: values.urlLink,
             imageFile: values.imageFile,

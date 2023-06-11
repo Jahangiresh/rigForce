@@ -39,7 +39,7 @@ const Home = () => {
             <div className="cover h-[524px]  text-center relative w-full flex justify-center items-center">
               <img
                 className="absolute top-0 left-0 h-full w-full  object-cover -z-10"
-                src={`http://devserver298-001-site1.ctempurl.com/api/v1/files?filepath=${
+                src={`https://rigforce.az/api/v1/files?filepath=${
                   slider.image && slider.image.filePath
                 }`}
                 alt=""

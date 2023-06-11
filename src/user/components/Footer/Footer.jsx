@@ -3,7 +3,10 @@ import { Link } from "react-router-dom";
 import navmenu from "../../configs/navmenu";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllSettings } from "../../../features/settingSlice";
+import { useTranslation } from "react-i18next";
 const Footer = () => {
+  const { t, i18n } = useTranslation();
+
   const settings = useSelector(getAllSettings);
   console.log(settings);
   return (
@@ -11,7 +14,7 @@ const Footer = () => {
       <div className="container">
         <div className=" flex justify-between gap-x-20 max-md:flex-col max-md:gap-y-10">
           <div className="basis-6/12">
-            <h2 className="font-bold text-xl text-white">Missiyamız</h2>
+            <h2 className="font-bold text-xl text-white">{t("Missiyamız")}</h2>
             <p className="text-justify text-white mt-3 leading-8 font-normal">
               {settings &&
                 settings.find((s) => s.key === "misyamiz") &&
@@ -21,15 +24,18 @@ const Footer = () => {
           <div className="basis-3/12 md:pl-10">
             <h2 className="font-bold text-xl text-white">Menu</h2>
             <ul className="text-white flex flex-col mt-3 leading-8">
-              <Link to="/">Əsas səhifə</Link>
-              <Link to="/about">Haqqımızda</Link>
-              <Link to="/services">Xidmətlər</Link>
-              <Link to="/products">Məhsullar</Link>
-              <Link to="/contact">Əlaqə</Link>
+              <Link to="/"> {t("Əsas səhifə")} </Link>
+              <Link to="/about"> {t("Haqqımızda")}</Link>
+              <Link to="/services">{t("Xidmətlər")}</Link>
+              <Link to="/products">{t("Məhsullar")}</Link>
+              <Link to="/contact">{t("Əlaqə")}</Link>
             </ul>
           </div>
           <div className="basis-3/12">
-            <h2 className="font-bold text-xl text-white">Bizimlə əlaqə</h2>
+            <h2 className="font-bold text-xl text-white">
+              {" "}
+              {t("Bizimlə əlaqə")}
+            </h2>
             <ul>
               {/* {
 

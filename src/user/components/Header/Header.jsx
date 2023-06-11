@@ -105,8 +105,7 @@ const Header = () => {
               >
                 {t("Əlaqə")}
               </Link>
-
-              {/* <HeaderLangs /> */}
+              <HeaderLangs />
             </ul>
           </nav>
         </div>

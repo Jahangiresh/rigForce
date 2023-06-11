@@ -80,7 +80,7 @@ export default function Services() {
                 <td class="px-6 py-4 w-44">
                   <img
                     className="adminadvocates__img w-full object-contain"
-                    src={`http://devserver298-001-site1.ctempurl.com/api/v1/files?filepath=${service.images[0].filePath}`}
+                    src={`https://rigforce.az/api/v1/files?filepath=${service.images[0].filePath}`}
                     alt="img"
                   />
                 </td>

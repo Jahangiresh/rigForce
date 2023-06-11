@@ -41,7 +41,7 @@ const ProductsList = () => {
         dispatch({ type: "FETCH_REQUEST" });
 
         const { data } = await axios.get(
-          `http://devserver298-001-site1.ctempurl.com/api/v1/equipments?equipmentCategoryId=${prodCategory}`,
+          `https://rigforce.az/api/v1/equipments?equipmentCategoryId=${prodCategory}`,
           {
             params: {
               pageNumber: 1,
@@ -96,7 +96,7 @@ const ProductsList = () => {
                 <div className="pImage h-60 ">
                   <img
                     className="w-full h-full object-contain"
-                    src={`http://devserver298-001-site1.ctempurl.com/api/v1/files?filepath=${
+                    src={`https://rigforce.az/api/v1/files?filepath=${
                       prod.images[0].filePath && prod.images[0].filePath
                     }`}
                     alt="img"

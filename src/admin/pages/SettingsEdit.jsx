@@ -35,7 +35,7 @@ const SettingsEdit = () => {
 
       try {
         const resp = await axios.get(
-          `http://devserver298-001-site1.ctempurl.com/api/v1/settings/${id}`
+          `https://rigforce.az/api/v1/settings/${id}`
         );
 
         dispatch({ type: "FETCH_SUCCES", payload: resp.data });
@@ -60,7 +60,7 @@ const SettingsEdit = () => {
 
       try {
         await axios.put(
-          `http://devserver298-001-site1.ctempurl.com/api/v1/settings/${id}`,
+          `https://rigforce.az/api/v1/settings/${id}`,
           {
             key: values.key,
             value: values.value,

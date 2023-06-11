@@ -15,7 +15,7 @@ export const deleteService = createAsyncThunk(
   async (payload) => {
     try {
       const response = await axios.delete(
-        `http://devserver298-001-site1.ctempurl.com/api/v1/providedservices/${payload}`,
+        `https://rigforce.az/api/v1/providedservices/${payload}`,
         {
           headers: {
             Authorization: `Bearer ${accessToken}`,
@@ -38,16 +38,12 @@ export const createService = createAsyncThunk(
   "Services/createService", // Fix: Use a unique action type
   async (payload) => {
     const response = await axios
-      .post(
-        "http://devserver298-001-site1.ctempurl.com/api/v1/providedservices",
-        payload,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-            Authorization: `Bearer ${accessToken}`,
-          },
-        }
-      )
+      .post("https://rigforce.az/api/v1/providedservices", payload, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+          Authorization: `Bearer ${accessToken}`,
+        },
+      })
       .then((res) => {
         toast.success("yaradıldı");
         // window.location = "/adminalshn001907/branches";
@@ -66,7 +62,7 @@ export const ServiceFetch = createAsyncThunk(
   "Services/categoryFetch", // Fix: Use a unique action type
   async () => {
     const resp = await axios.get(
-      "http://devserver298-001-site1.ctempurl.com/api/v1/providedservices",
+      "https://rigforce.az/api/v1/providedservices",
       {
         params: {
           pageNumber: 1,

@@ -35,7 +35,7 @@ const SlidersEdit = () => {
 
       try {
         const resp = await axios.get(
-          `http://devserver298-001-site1.ctempurl.com/api/v1/sliders/${id}`
+          `https://rigforce.az/api/v1/sliders/${id}`
         );
 
         dispatch({ type: "FETCH_SUCCES", payload: resp.data });
@@ -59,7 +59,7 @@ const SlidersEdit = () => {
 
       try {
         await axios.put(
-          `http://devserver298-001-site1.ctempurl.com/api/v1/sliders/${id}`,
+          `https://rigforce.az/api/v1/sliders/${id}`,
           {
             order: values.order,
             imageFile: values.imageFile,

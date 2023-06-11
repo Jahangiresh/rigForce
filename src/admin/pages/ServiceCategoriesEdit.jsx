@@ -35,7 +35,7 @@ const ServiceCategoriesEdit = () => {
 
       try {
         const resp = await axios.get(
-          `http://devserver298-001-site1.ctempurl.com/api/v1/providedservicecategories/${id}`
+          `https://rigforce.az/api/v1/providedservicecategories/${id}`
         );
 
         dispatch({ type: "FETCH_SUCCES", payload: resp.data });
@@ -60,7 +60,7 @@ const ServiceCategoriesEdit = () => {
 
       try {
         await axios.put(
-          `http://devserver298-001-site1.ctempurl.com/api/v1/providedservicecategories/${id}`,
+          `https://rigforce.az/api/v1/providedservicecategories/${id}`,
           {
             title: values.title,
             description: values.description,

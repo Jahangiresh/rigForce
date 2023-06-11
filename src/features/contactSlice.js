@@ -14,20 +14,16 @@ export const createContact = createAsyncThunk(
   "contact/postApi",
   async (payload) => {
     const response = await axios
-      .post(
-        `http://devserver298-001-site1.ctempurl.com/api/v1/contactusforms`,
-        payload,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-            Authorization: `Bearer ${accessToken}`,
-          },
-          body: {
-            // pageNumber: 1,
-            //     pageNumber: 10,
-          },
-        }
-      )
+      .post(`https://rigforce.az/api/v1/contactusforms`, payload, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+          Authorization: `Bearer ${accessToken}`,
+        },
+        body: {
+          // pageNumber: 1,
+          //     pageNumber: 10,
+        },
+      })
       .then((res) => {
         toast.success("sent");
         // window.location = "/adminalshn001907/branches";
@@ -46,7 +42,7 @@ export const deleteContact = createAsyncThunk(
   async (payload) => {
     try {
       const response = await axios.delete(
-        `http://devserver298-001-site1.ctempurl.com/api/v1/equipmentcategories/${payload}`,
+        `https://rigforce.az/api/v1/equipmentcategories/${payload}`,
         {
           headers: {
             Authorization: `Bearer ${accessToken}`,
@@ -70,7 +66,7 @@ export const contactFetch = createAsyncThunk(
   async () => {
     try {
       const resp = await axios.get(
-        "http://devserver298-001-site1.ctempurl.com/api/v1/equipmentcategories",
+        "https://rigforce.az/api/v1/equipmentcategories",
         {
           params: {
             pageNumber: 1,

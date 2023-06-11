@@ -41,7 +41,7 @@ const Services = () => {
         dispatch({ type: "FETCH_REQUEST" });
 
         const { data } = await axios.get(
-          `http://devserver298-001-site1.ctempurl.com/api/v1/providedservices?providedServiceCategoryId=${serCategory}`,
+          `https://rigforce.az/api/v1/providedservices?providedServiceCategoryId=${serCategory}`,
           {
             params: {
               pageNumber: 1,
@@ -96,7 +96,7 @@ const Services = () => {
                 <div className="serviceimage w-[61px] h-[61px] mb-7">
                   <img
                     className="w-full h-full object-cover"
-                    src={`http://devserver298-001-site1.ctempurl.com/api/v1/files?filepath=${service.images[0].filePath}`}
+                    src={`https://rigforce.az/api/v1/files?filepath=${service.images[0].filePath}`}
                     alt=""
                   />
                 </div>

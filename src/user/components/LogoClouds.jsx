@@ -5,8 +5,11 @@ import Slider from "react-slick";
 
 import { useSelector } from "react-redux";
 import { getAllPartners } from "../../features/partnerSlice";
+import { useTranslation } from "react-i18next";
 
 const LogoClouds = () => {
+  const { t, i18n } = useTranslation();
+
   const logos = useSelector(getAllPartners);
   var settings = {
     dots: false,
@@ -50,7 +53,7 @@ const LogoClouds = () => {
     <div className="h-[219px] py-10 overflow-y-hidden">
       <div className="container">
         <h1 className="text-center text__black font-bold text-[28px] ">
-          Tərəfdaşlar
+          {t("Tərəfdaşlar")}
         </h1>
         <Slider {...settings} className="h-full mt-10">
           {logos &&
@@ -58,7 +61,7 @@ const LogoClouds = () => {
               <div className="px-4 h-[70px]">
                 <img
                   className="h-full w-full  object-contain"
-                  src={`http://devserver298-001-site1.ctempurl.com/api/v1/files?filepath=${logo.image.filePath}`}
+                  src={`https://rigforce.az/api/v1/files?filepath=${logo.image.filePath}`}
                   alt="logo"
                 />
               </div>

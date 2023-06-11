@@ -1,6 +1,6 @@
 // import axios from "axios";
 
-// const API_URL = "http://devserver298-001-site1.ctempurl.com/api/v1";
+// const API_URL = "https://rigforce.az/api/v1";
 
 // class AuthService {
 //   async login(username, password) {
@@ -57,7 +57,7 @@
 // export default new AuthService();
 import axios from "axios";
 const ADMIN = "/adminalshn001907";
-const BASE_URL = "http://devserver298-001-site1.ctempurl.com/api/v1";
+const BASE_URL = "https://rigforce.az/api/v1";
 class AuthService {
   async login(username, password) {
     return await axios

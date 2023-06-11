@@ -84,7 +84,7 @@ export default function Equipments() {
                 >
                   <img
                     class="w-10 h-10 rounded-full object-contain"
-                    src={`http://devserver298-001-site1.ctempurl.com/api/v1/files?filepath=${equipment.equipmentCategory.image.filePath}`}
+                    src={`https://rigforce.az/api/v1/files?filepath=${equipment.equipmentCategory.image.filePath}`}
                     alt="img"
                   />
                   <div class="pl-3">

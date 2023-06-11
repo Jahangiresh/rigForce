@@ -5,8 +5,11 @@ import { FiChevronRight } from "react-icons/fi";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { getAllSettings } from "../../features/settingSlice";
+import { useTranslation } from "react-i18next";
 
 const AboutComponent = () => {
+  const { t, i18n } = useTranslation();
+
   const settings = useSelector(getAllSettings);
 
   return (
@@ -22,7 +25,7 @@ const AboutComponent = () => {
               />
             </div>
             <h1 className="text-[28px] font-bold text__black mb-3">
-              Haqqımızda
+              {t("Haqqımızda")}
             </h1>
             <p
               style={{
@@ -36,7 +39,8 @@ const AboutComponent = () => {
             </p>
             <Link to="/about">
               <button className="flex btn__main items-center ">
-                Daha çox <FiChevronRight className="ml-2" />{" "}
+                {t("Daha çox")}
+                <FiChevronRight className="ml-2" />{" "}
               </button>
             </Link>
           </div>
@@ -49,7 +53,7 @@ const AboutComponent = () => {
               />
             </div>
             <h1 className="text-[28px] font-bold text__black mb-3">
-              Görüşlərimiz & Məqsədimiz
+              {t("Görüşlərimiz və Məqsədlərimiz")}
             </h1>
             <p
               style={{
@@ -63,7 +67,8 @@ const AboutComponent = () => {
             </p>
             <Link to="/about">
               <button className="flex btn__main items-center ">
-                Daha çox <FiChevronRight className="ml-2" />{" "}
+                {t("Daha çox")}
+                <FiChevronRight className="ml-2" />{" "}
               </button>
             </Link>
           </div>

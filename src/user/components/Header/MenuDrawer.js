@@ -16,6 +16,10 @@ export default function MenuDrawer() {
     right: false,
   });
 
+  function clickLang(lang) {
+    i18n.changeLanguage(lang);
+  }
+
   const toggleDrawer = (anchor, open) => (event) => {
     if (
       event.type === "keydown" &&
@@ -43,21 +47,22 @@ export default function MenuDrawer() {
         <RxCross2 className="menu__header__x text-xl" />
       </div>
       <ul className="menu__ul flex flex-col items-center gap-y-4 mb-4 ">
-        <Link to="/">Əsas səhifə</Link>
-        <Link to="/about">Haqqımızda</Link>
-        <Link to="/services">Xidmətlər</Link>
-        <Link to="/products">Məhsullar</Link>
-        <Link to="/contact">Əlaqə</Link>
+        <Link to="/">{t("Əsas səhifə")}</Link>
+        <Link to="/about"> {t("Haqqımızda")}</Link>
+        <Link to="/services"> {t("Xidmətlər")}</Link>
+        <Link to="/products"> {t("Məhsullar")}</Link>
+        <Link to="/contact"> {t("Əlaqə")}</Link>
       </ul>
       <hr />
-      {/* <ul className="menu__ul flex justify-center gap-5 py-8">
+      <ul className="menu__ul flex justify-center gap-5 py-8">
         <li onClick={() => clickLang("az")} className="menu__ul__li">
           Azərbaycan
         </li>
+
         <li onClick={() => clickLang("en")} className="menu__ul__li">
           English
         </li>
-      </ul> */}
+      </ul>
     </Box>
   );
 

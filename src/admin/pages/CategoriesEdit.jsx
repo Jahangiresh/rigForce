@@ -35,7 +35,7 @@ const CategoriesEdit = () => {
 
       try {
         const resp = await axios.get(
-          `http://devserver298-001-site1.ctempurl.com/api/v1/equipmentcategories/${id}`
+          `https://rigforce.az/api/v1/equipmentcategories/${id}`
         );
 
         dispatch({ type: "FETCH_SUCCES", payload: resp.data });
@@ -60,7 +60,7 @@ const CategoriesEdit = () => {
 
       try {
         await axios.put(
-          `http://devserver298-001-site1.ctempurl.com/api/v1/equipmentcategories/${id}`,
+          `https://rigforce.az/api/v1/equipmentcategories/${id}`,
           {
             title: values.title,
             description: values.description,
