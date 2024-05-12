@@ -9,8 +9,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { createContact } from "../../features/contactSlice";
 import { getAllSettings } from "../../features/settingSlice";
 import Loader from "../components/Loader/Loader";
+import { useTranslation } from "react-i18next";
 
 const Contact = () => {
+  const { t, i18n } = useTranslation();
+  const lang = localStorage.getItem("i18nextLng");
   const dispatch = useDispatch();
   const settings = useSelector(getAllSettings);
   useEffect(() => {
@@ -22,7 +25,7 @@ const Contact = () => {
     <Loader />
   ) : (
     <>
-      <Breadcrumbs title="Əlaqə" />
+      <Breadcrumbs title={t("Əlaqə")} />
 
       <div className="container !my-12">
         <Formik
@@ -41,7 +44,9 @@ const Contact = () => {
           <Form className="grid lg:grid-cols-3 grid-cols-1">
             <div className="flex w-full lg:flex-col gap-y-4 justify-center max-lg:mb-10 max-lg:gap-x-2 max-sm:flex-col">
               <div className="border border-[#e3e3e3] shadow-lg px-10 py-5 lg:mr-10">
-                <h3 className="font-bold text__black text-xl mb-5">Telefon:</h3>
+                <h3 className="font-bold text__black text-xl mb-5">
+                  {t("Telefon")}:
+                </h3>
                 <p>
                   {" "}
                   {settings &&
@@ -50,7 +55,9 @@ const Contact = () => {
                 </p>
               </div>
               <div className="border border-[#e3e3e3] shadow-lg px-10 py-5 lg:mr-10">
-                <h3 className="font-bold text__black text-xl mb-5">Email:</h3>
+                <h3 className="font-bold text__black text-xl mb-5">
+                  {t("Email")}:
+                </h3>
                 <p>
                   {" "}
                   {settings &&
@@ -59,12 +66,20 @@ const Contact = () => {
                 </p>
               </div>
               <div className="border border-[#e3e3e3] shadow-lg px-10 py-5 lg:mr-10">
-                <h3 className="font-bold text__black text-xl mb-5">Ünvan:</h3>
+                <h3 className="font-bold text__black text-xl mb-5">
+                  {t("Ünvan")}:
+                </h3>
                 <p>
                   {" "}
                   {settings &&
-                    settings.find((s) => s.key === "unvan") &&
-                    settings.find((s) => s.key === "unvan").value}
+                    settings.find(
+                      (s) =>
+                        s.key === `${lang === "az" ? "unvan_az" : "unvan_eng"}`
+                    ) &&
+                    settings.find(
+                      (s) =>
+                        s.key === `${lang === "az" ? "unvan_az" : "unvan_eng"}`
+                    ).value}
                 </p>
               </div>
             </div>
@@ -74,7 +89,7 @@ const Contact = () => {
                   className="text__black font-bold mb-2"
                   htmlFor="fullName"
                 >
-                  Ad & Soyad
+                  {t("Ad & Soyad")}
                 </label>
                 <Field
                   type="text"
@@ -85,7 +100,7 @@ const Contact = () => {
               </div>
               <div className="flex flex-col">
                 <label className="text__black font-bold mb-2" htmlFor="email">
-                  Email
+                  {t("Email")}
                 </label>
                 <Field
                   type="email"
@@ -99,7 +114,7 @@ const Contact = () => {
                   className="text__black font-bold mb-2"
                   htmlFor="phoneNumber"
                 >
-                  Telefon
+                  {t("Telefon")}
                 </label>
                 <Field
                   type="text"
@@ -110,7 +125,7 @@ const Contact = () => {
               </div>
               <div className="flex flex-col">
                 <label className="text__black font-bold mb-2" htmlFor="subject">
-                  Mövzu
+                  {t("Mövzu")}
                 </label>
                 <Field
                   type="text"
@@ -121,7 +136,7 @@ const Contact = () => {
               </div>
               <div className="col-span-2 flex flex-col">
                 <label className="text__black font-bold mb-2" htmlFor="message">
-                  Mesaj
+                  {t("Mesaj")}
                 </label>
                 <Field
                   as="textarea"
@@ -133,7 +148,7 @@ const Contact = () => {
                 />
                 <div className="rail !w-full flex justify-end mt-3">
                   <button type="submit" className="btn__main !py-3 w-max">
-                    Göndər
+                    {t("Göndər")}
                   </button>
                 </div>
               </div>
@@ -142,7 +157,11 @@ const Contact = () => {
         </Formik>
       </div>
       <iframe
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d194473.52376745004!2d49.690150724057396!3d40.39447551158743!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40307d6bd6211cf9%3A0x343f6b5e7ae56c6b!2sBaku!5e0!3m2!1sen!2saz!4v1683386722153!5m2!1sen!2saz"
+        src={
+          settings &&
+          settings.find((s) => s.key === "map") &&
+          settings.find((s) => s.key === "map").value
+        }
         style={{ width: "100%", height: "500px" }}
         loading="lazy"
         referrerpolicy="no-referrer-when-downgrade"

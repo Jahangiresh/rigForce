@@ -10,6 +10,8 @@ import { toast } from "react-hot-toast";
 import { useSelector } from "react-redux";
 import { getAllEquipments } from "../../../features/EquipmentSlice";
 import Loader from "../../components/Loader/Loader";
+import { useTranslation } from "react-i18next";
+import FilterCategoryList from "../../components/FilterCategoryList";
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -25,6 +27,7 @@ const reducer = (state, action) => {
 };
 
 const ProductsList = () => {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const allProds = useSelector(getAllEquipments);
   const [{ error, loader, prods }, dispatch] = useReducer(reducer, {
@@ -60,67 +63,79 @@ const ProductsList = () => {
     <Loader />
   ) : (
     <>
-      <Breadcrumbs title={"Məhsullar"} />
+      <Breadcrumbs title={t("Məhsullar")} />
       <div className="container">
-        <div className="grid grid-cols-3 max-sm:grid-cols-1 max-lg:grid-cols-2  py-10 gap-6 ">
-          {prods.length == 0 ? (
-            <div className="w-full col-span-3">
-              <div
-                class="flex  p-4 text-sm text-gray-800 border border-gray-300 rounded-lg bg-gray-50 dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600"
-                role="alert"
-              >
-                <svg
-                  aria-hidden="true"
-                  class="flex-shrink-0 inline w-5 h-5 mr-3"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
-                    clip-rule="evenodd"
-                  ></path>
-                </svg>
-                <span class="sr-only">Info</span>
-                <div>
-                  <span class="font-medium">Diqqət!</span> Bu kateqoriya üzrə
-                  məhsul tapılmadı
-                </div>
-              </div>
-            </div>
-          ) : (
-            prods &&
-            prods.map((prod) => (
-              <div className="rounded-md shadow-md border border-[#e3e3e3]">
-                <div className="pImage h-60 ">
-                  <img
-                    className="w-full h-full object-contain"
-                    src={`https://rigforce.az/api/v1/files?filepath=${
-                      prod.images[0].filePath && prod.images[0].filePath
-                    }`}
-                    alt="img"
-                  />
-                </div>
-                <div className="content my-6 flex flex-col items-center px-6">
-                  <h1 className="font-bold text__black text-xl ">
-                    {prod.title}
-                  </h1>
-                  <p className="my-2 text-center leading-7">
-                    {prod.description}
-                  </p>
-                  <button
-                    onClick={() =>
-                      navigate(`/products/${prodCategory}/${prod.id}`)
-                    }
-                    className="btn__secondary flex items-center"
+        <div className="grid grid-cols-4 gap-4 py-10 max-sm:grid-cols-1">
+          <div className="col-span-1">
+            <h2 className="px-4 font-normal text-xl">
+              {t("Məhsul Kateqoriyası")}
+            </h2>
+            <FilterCategoryList />
+          </div>
+          <div className="col-span-3">
+            <div className="grid grid-cols-3 max-sm:grid-cols-1 max-lg:grid-cols-2 gap-6 ">
+              {prods.length == 0 ? (
+                <div className="w-full col-span-3">
+                  <div
+                    class="flex  p-4 text-sm text-gray-800 border border-gray-300 rounded-lg bg-gray-50 dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600"
+                    role="alert"
                   >
-                    Daha ətraflı <FiChevronRight />
-                  </button>
+                    <svg
+                      aria-hidden="true"
+                      class="flex-shrink-0 inline w-5 h-5 mr-3"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
+                        clip-rule="evenodd"
+                      ></path>
+                    </svg>
+                    <span class="sr-only">Info</span>
+                    <div>
+                      <span class="font-medium">{t("Diqqət")}</span>{" "}
+                      {t("MəhsulTapılmadı")}
+                    </div>
+                  </div>
                 </div>
-              </div>
-            ))
-          )}
+              ) : (
+                prods &&
+                prods.map((prod) => (
+                  <div className="rounded-md shadow-md border border-[#e3e3e3]">
+                    <div className="pImage h-60 ">
+                      <img
+                        className="w-full h-full object-contain"
+                        src={`https://rigforce.az/api/v1/files?filepath=${
+                          prod.images[0].filePath && prod.images[0].filePath
+                        }`}
+                        alt="img"
+                      />
+                    </div>
+                    <div className="content my-6 flex flex-col items-center px-6">
+                      <h1 className="font-bold whitespace-normal text-center text-xl ">
+                        {prod.title}
+                      </h1>
+                      <p className="my-2 text-center leading-7">
+                        {prod.description?.length > 100
+                          ? prod.description.slice(0, 100) + "..."
+                          : prod.description}
+                      </p>
+                      <button
+                        onClick={() =>
+                          navigate(`/products/${prodCategory}/${prod.id}`)
+                        }
+                        className="btn__secondary flex items-center"
+                      >
+                        {t("Daha ətraflı")} <FiChevronRight />
+                      </button>
+                    </div>
+                  </div>
+                ))
+              )}
+            </div>
+          </div>
         </div>
       </div>
     </>

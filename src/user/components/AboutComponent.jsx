@@ -9,6 +9,7 @@ import { useTranslation } from "react-i18next";
 
 const AboutComponent = () => {
   const { t, i18n } = useTranslation();
+  const lang = localStorage.getItem("i18nextLng");
 
   const settings = useSelector(getAllSettings);
 
@@ -34,8 +35,16 @@ const AboutComponent = () => {
               className="md:leading-8 text__black mb-6 "
             >
               {settings &&
-                settings.find((s) => s.key === "haqqimizda") &&
-                settings.find((s) => s.key === "haqqimizda").value}
+                settings.find(
+                  (s) =>
+                    s.key ===
+                    `${lang === "az" ? "haqqimizda_az" : "haqqimizda_eng"}`
+                ) &&
+                settings.find(
+                  (s) =>
+                    s.key ===
+                    `${lang === "az" ? "haqqimizda_az" : "haqqimizda_eng"}`
+                ).value}
             </p>
             <Link to="/about">
               <button className="flex btn__main items-center ">
@@ -62,8 +71,20 @@ const AboutComponent = () => {
               className="md:leading-8 text__black mb-6"
             >
               {settings &&
-                settings.find((s) => s.key === "gorushlerimiz") &&
-                settings.find((s) => s.key === "gorushlerimiz").value}
+                settings.find(
+                  (s) =>
+                    s.key ===
+                    `${
+                      lang === "az" ? "gorushlerimiz_az" : "gorushlerimiz_eng"
+                    }`
+                ) &&
+                settings.find(
+                  (s) =>
+                    s.key ===
+                    `${
+                      lang === "az" ? "gorushlerimiz_az" : "gorushlerimiz_eng"
+                    }`
+                ).value}
             </p>
             <Link to="/about">
               <button className="flex btn__main items-center ">

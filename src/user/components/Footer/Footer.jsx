@@ -6,9 +6,9 @@ import { getAllSettings } from "../../../features/settingSlice";
 import { useTranslation } from "react-i18next";
 const Footer = () => {
   const { t, i18n } = useTranslation();
-
+  const lang = localStorage.getItem("i18nextLng");
   const settings = useSelector(getAllSettings);
-  console.log(settings);
+
   return (
     <div className="bg__blue pt-14">
       <div className="container">
@@ -50,8 +50,14 @@ const Footer = () => {
               <p className="text-justify text-white mt-3 leading-7">
                 {t("Ünvan")}:{" "}
                 {settings &&
-                  settings.find((s) => s.key === "unvan") &&
-                  settings.find((s) => s.key === "unvan").value}
+                  settings.find(
+                    (s) =>
+                      s.key === `${lang === "az" ? "unvan_az" : "unvan_eng"}`
+                  ) &&
+                  settings.find(
+                    (s) =>
+                      s.key === `${lang === "az" ? "unvan_az" : "unvan_eng"}`
+                  ).value}
               </p>
               {/* <li className="text-white">
                 Mobil: {settings && settings[3]?.value}
@@ -68,7 +74,10 @@ const Footer = () => {
       </div>
       <div className="flex items-center justify-center bg-[#002b42] h-12 mt-5 tracking-wider text-white font-thin leading-5  text-sm">
         {" "}
-        Copyright © - Weblash group
+        Copyright © -{" "}
+        <a href="https://weblash.az" target="_blank">
+          Weblash group
+        </a>
       </div>
     </div>
   );

@@ -8,15 +8,17 @@ import { useNavigate } from "react-router-dom";
 import { getAllCategories, getStatus } from "../../../features/categorySlice";
 import { useSelector } from "react-redux";
 import Loader from "../../components/Loader/Loader";
+import { useTranslation } from "react-i18next";
 const Products = () => {
   const navigate = useNavigate();
+  const { t, i18n } = useTranslation();
   const categories = useSelector(getAllCategories);
   const status = useSelector(getStatus);
   return status == "pending" ? (
     <Loader />
   ) : (
     <>
-      <Breadcrumbs title={"Məhsullar"} />
+      <Breadcrumbs title={t("Məhsullar")} />
       <div className="container grid max-md:grid-cols-1 grid-cols-2 h-auto py-10 gap-x-3">
         {categories &&
           categories.map((category) => (
@@ -37,7 +39,7 @@ const Products = () => {
                   onClick={() => navigate(`/products/${category.id}`)}
                   className="btn__secondary flex items-center justify-center text-center w-44"
                 >
-                  Daha ətraflı <FiChevronRight className="ml-2" />
+                  {t("Daha ətraflı")} <FiChevronRight className="ml-2" />
                 </button>
               </div>
             </div>

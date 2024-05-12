@@ -7,6 +7,7 @@ import { useTranslation } from "react-i18next";
 const ServicesComponent = () => {
   const settings = useSelector(getAllSettings);
   const { t, i18n } = useTranslation();
+  const lang = localStorage.getItem("i18nextLng");
 
   return (
     <div className="bg__blue py-12">
@@ -17,8 +18,16 @@ const ServicesComponent = () => {
           </h1>
           <p className="leading-6 text-center md:w-[700px] text-white">
             {settings &&
-              settings.find((s) => s.key === "servisler") &&
-              settings.find((s) => s.key === "servisler").value}
+              settings.find(
+                (s) =>
+                  s.key ===
+                  `${lang === "az" ? "servisler_az" : "servisler_eng"}`
+              ) &&
+              settings.find(
+                (s) =>
+                  s.key ===
+                  `${lang === "az" ? "servisler_az" : "servisler_eng"}`
+              ).value}
           </p>
         </div>
         <div className="services">

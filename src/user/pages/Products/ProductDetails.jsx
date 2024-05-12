@@ -10,6 +10,7 @@ import axios from "axios";
 import { toast } from "react-hot-toast";
 import { useReducer } from "react";
 import Loader from "../../components/Loader/Loader";
+import { useTranslation } from "react-i18next";
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -24,6 +25,7 @@ const reducer = (state, action) => {
   }
 };
 const ProductDetails = () => {
+  const { t } = useTranslation();
   const [{ error, loader, prodDetails }, dispatch] = useReducer(reducer, {
     prodDetails: [],
     error: false,
@@ -71,7 +73,7 @@ const ProductDetails = () => {
     <Loader />
   ) : (
     <>
-      <Breadcrumbs title={"Məhsullar"} />
+      <Breadcrumbs title={t("Məhsullar")} />
       <div className="container py-10">
         <div className="grid lg:grid-cols-3 max-lg:flex max-lg:flex-col max-lg:items-center  ">
           <div className="col-span-1 max-lg:mb-10">
@@ -83,7 +85,9 @@ const ProductDetails = () => {
             </h1>
             <ul className="leading-8">
               <li>
-                <span className="text__black font-medium">Məhsul kodu: </span>
+                <span className="text__black font-medium">
+                  {t("Məhsul kodu")}:{" "}
+                </span>
                 <span>
                   {" "}
                   {prodDetails.productCode && prodDetails.productCode}
@@ -91,7 +95,7 @@ const ProductDetails = () => {
               </li>{" "}
               <li>
                 <span className="text__black font-medium">
-                  Akkreditə olunub :{" "}
+                  {t("Akkreditə olunub")}:{" "}
                 </span>
                 <span>
                   {" "}
@@ -99,24 +103,28 @@ const ProductDetails = () => {
                 </span>
               </li>{" "}
               <li>
-                <span className="text__black font-medium">Çəkisi: </span>
+                <span className="text__black font-medium">{t("Çəkisi")}: </span>
                 <span> {prodDetails.weight && prodDetails.weight}</span>
               </li>{" "}
               <li>
-                <span className="text__black font-medium">Ölçüsü: </span>
+                <span className="text__black font-medium">{t("Ölçüsü")}: </span>
                 <span> {prodDetails.size && prodDetails.size}</span>
               </li>{" "}
               <li>
-                <span className="text__black font-medium">Materialı: </span>
+                <span className="text__black font-medium">
+                  {t("Materialı")}:{" "}
+                </span>
                 <span> {prodDetails.material && prodDetails.material}</span>
               </li>{" "}
               <li>
-                <span className="text__black font-medium">Fitinqlər: </span>
+                <span className="text__black font-medium">
+                  {t("Fitinqlər")}:{" "}
+                </span>
                 <span> {prodDetails.fittings && prodDetails.fittings}</span>
               </li>{" "}
               <li>
                 <span className="text__black font-medium">
-                  Məhsul Xüsusiyyətləri :{" "}
+                  {t("Məhsul Xüsusiyyətləri")} :{" "}
                 </span>
                 <span> {prodDetails.features && prodDetails.features}</span>
               </li>{" "}
@@ -130,7 +138,7 @@ const ProductDetails = () => {
                   }`}
                   download
                 >
-                  PDF yüklə
+                  {t("PDF yüklə")}
                 </a>
               </li>
               <li>
@@ -141,7 +149,7 @@ const ProductDetails = () => {
                   }`}
                   download
                 >
-                  Uyğunluq Bəyannaməsi
+                  {t("Uyğunluq Bəyannaməsi")}
                 </a>
               </li>{" "}
               <li>
@@ -152,7 +160,7 @@ const ProductDetails = () => {
                   }`}
                   download
                 >
-                  Məlumat vərəqi
+                  {t("Məlumat vərəqi")}
                 </a>
               </li>
             </ul>
@@ -161,7 +169,7 @@ const ProductDetails = () => {
         <div className="grid lg:grid-cols-3">
           <div className="desc col-span-2 ">
             <h1 className="text__black font-bold text-[28px] mb-6 mt-24 ">
-              Məhsul təsviri:
+              {t("Məhsul təsviri")}:
             </h1>
             <p
               style={{

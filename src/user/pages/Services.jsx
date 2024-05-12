@@ -13,6 +13,8 @@ import { useEffect } from "react";
 import axios from "axios";
 import { useReducer } from "react";
 import { toast } from "react-hot-toast";
+import { useTranslation } from "react-i18next";
+
 const reducer = (state, action) => {
   switch (action.type) {
     case "FETCH_REQUEST":
@@ -26,6 +28,7 @@ const reducer = (state, action) => {
   }
 };
 const Services = () => {
+  const { t } = useTranslation();
   const [{ error, loader, services }, dispatch] = useReducer(reducer, {
     services: [],
     error: false,
@@ -60,7 +63,7 @@ const Services = () => {
     <Loader />
   ) : (
     <>
-      <Breadcrumbs title={"Xidmətlər"} />
+      <Breadcrumbs title={t("Xidmətlər")} />
       <div className="container">
         <div className="grid md:grid-cols-3 max-lg:gap-x-6 gap-x-20 max-md:gap-y-10 my-12 ">
           {services.length == 0 ? (
@@ -84,8 +87,8 @@ const Services = () => {
                 </svg>
                 <span class="sr-only">Info</span>
                 <div>
-                  <span class="font-medium">Diqqət!</span> Bu kateqoriya üzrə
-                  xidmət tapılmadı
+                  <span class="font-medium">{t("Diqqət")}</span>{" "}
+                  {t("MəhsulTapılmadı")}
                 </div>
               </div>
             </div>

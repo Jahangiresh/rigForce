@@ -5,9 +5,11 @@ import { FiChevronRight } from "react-icons/fi";
 import { useSelector } from "react-redux";
 import { getAllCategories } from "../../../features/categorySlice";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const ProductBanner = () => {
   const categories = useSelector(getAllCategories);
+  const { t, i18n } = useTranslation();
   const navigate = useNavigate();
   return (
     <div className="grid max-md:grid-cols-1 grid-cols-2 h-auto">
@@ -30,7 +32,7 @@ const ProductBanner = () => {
                 onClick={() => navigate(`/products/${category.id}`)}
                 className="btn__secondary flex items-center w-44"
               >
-                Daha çox <FiChevronRight className="ml-2" />
+                {t("Daha çox")} <FiChevronRight className="ml-2" />
               </button>
             </div>
           </div>

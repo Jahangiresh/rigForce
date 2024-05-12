@@ -4,7 +4,10 @@ import img from "../../assets/images/coverbreadcrumbs.svg";
 import linesvg from "../../assets/images/linesvg.svg";
 import { useSelector } from "react-redux";
 import { getAllSettings } from "../../features/settingSlice";
+import { useTranslation } from "react-i18next";
+
 const Breadcrumbs = ({ title }) => {
+  const { t } = useTranslation();
   const settings = useSelector(getAllSettings);
   return (
     <div className="h-[400px] relative w-full flex  items-center ">
@@ -21,7 +24,7 @@ const Breadcrumbs = ({ title }) => {
         <h1 className=" font-bold text-white text-[60px]">{title}</h1>
         <p className="text-white flex gap-x-3">
           <Link to="/" className="underline">
-            Əsas səhifə
+            {t("Əsas səhifə")}
           </Link>{" "}
           <img src={linesvg} alt="" /> {title}
         </p>

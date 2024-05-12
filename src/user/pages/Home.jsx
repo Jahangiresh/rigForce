@@ -12,14 +12,11 @@ import ServicesComponent from "../components/Services/ServicesComponent";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
-import { useEffect } from "react";
 const Home = () => {
   const sets = useSelector(getAllSettings);
   const sliders = useSelector(getAllSliders);
   const status = useSelector(getStatus);
-  useEffect(() => {
-    console.log(sliders, "slider");
-  }, []);
+
   const settings = {
     dots: false,
     infinite: true,
@@ -45,7 +42,6 @@ const Home = () => {
                 }`}
                 alt=""
               />
-
               <div className="cover__content !flex !flex-col !items-center !justify-center  h-full w-full max-sm:w-full max-sm:px-1 ">
                 <h1 className="font-bold text-white text-[38px] max-sm:text-[28px] max-sm:leading-2">
                   {sets &&

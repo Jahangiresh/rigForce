@@ -11,7 +11,10 @@ import {
 } from "../../features/serviceCategorySlice";
 import { useSelector } from "react-redux";
 import Loader from "../components/Loader/Loader";
+import { useTranslation } from "react-i18next";
+
 const ServiceCategories = () => {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const categories = useSelector(getAllServiceCategories);
   const status = useSelector(getStatus);
@@ -19,7 +22,7 @@ const ServiceCategories = () => {
     <Loader />
   ) : (
     <>
-      <Breadcrumbs title={"Xidmətlər"} />
+      <Breadcrumbs title={t("Xidmətlər")} />
       <div className="container grid max-md:grid-cols-1 grid-cols-2 h-auto py-10 gap-x-3">
         {categories &&
           categories.map((category) => (
@@ -40,7 +43,7 @@ const ServiceCategories = () => {
                   onClick={() => navigate(`/services/${category.id}`)}
                   className="btn__secondary flex items-center justify-center w-44"
                 >
-                  Daha ətraflı <FiChevronRight className="ml-2" />
+                  {t("Daha ətraflı")} <FiChevronRight className="ml-2" />
                 </button>
               </div>
             </div>
