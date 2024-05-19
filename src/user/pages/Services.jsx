@@ -7,7 +7,7 @@ import ContactComponent from "../components/ContactComponent";
 import LogoClouds from "../components/LogoClouds";
 import { useSelector } from "react-redux";
 import { getAllServices } from "../../features/serviceSlice";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import Loader from "../components/Loader/Loader";
 import { useEffect } from "react";
 import axios from "axios";
@@ -69,12 +69,12 @@ const Services = () => {
           {services.length == 0 ? (
             <div className="w-full col-span-3">
               <div
-                class="flex  p-4 text-sm text-gray-800 border border-gray-300 rounded-lg bg-gray-50 dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600"
+                className="flex  p-4 text-sm text-gray-800 border border-gray-300 rounded-lg bg-gray-50 dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600"
                 role="alert"
               >
                 <svg
                   aria-hidden="true"
-                  class="flex-shrink-0 inline w-5 h-5 mr-3"
+                  className="flex-shrink-0 inline w-5 h-5 mr-3"
                   fill="currentColor"
                   viewBox="0 0 20 20"
                   xmlns="http://www.w3.org/2000/svg"
@@ -85,35 +85,40 @@ const Services = () => {
                     clip-rule="evenodd"
                   ></path>
                 </svg>
-                <span class="sr-only">Info</span>
+                <span className="sr-only">Info</span>
                 <div>
-                  <span class="font-medium">{t("Diqqət")}</span>{" "}
+                  <span className="font-medium">{t("Diqqət")}</span>{" "}
                   {t("MəhsulTapılmadı")}
                 </div>
               </div>
             </div>
           ) : (
             services &&
-            services.map((service) => (
-              <div className="mb-3 py-7 px-3 max-md:px-10 flex flex-col items-center shadow-md rounded-lg border border-[#e3e3e3]">
-                <div className="serviceimage w-[61px] h-[61px] mb-7">
+            services.map((service, index) => (
+              <div
+                key={index}
+                className="mb-3 py-7 px-3 max-md:px-10 flex flex-col items-center shadow-md rounded-lg border border-[#e3e3e3]"
+              >
+                <div className="serviceimage w-full h-52 mb-7">
                   <img
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-fill"
                     src={`https://rigforce.az/api/v1/files?filepath=${service.images[0].filePath}`}
                     alt=""
                   />
                 </div>
-                <h2 className="text__black font-bold text-xl ">
-                  {service.title}
-                </h2>
-                <p
+                <Link to={`/service/${service.id}`}>
+                  <h2 className="text__black font-bold text-xl hover:text-amber-400	">
+                    {service.title}
+                  </h2>
+                </Link>
+                {/* <p
                   style={{
                     whiteSpace: "normal",
                   }}
                   className="my-4 text__black text-center h-auto"
                 >
                   {service.description}
-                </p>
+                </p> */}
 
                 {/* <button
                   onClick={() => navigate(`/services/${service.id}`)}

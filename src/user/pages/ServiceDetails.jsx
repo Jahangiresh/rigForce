@@ -7,8 +7,10 @@ import Breadcrumbs from "../components/Breadcrumbs";
 import ContactComponent from "../components/ContactComponent";
 import LogoClouds from "../components/LogoClouds";
 import Loader from "../components/Loader/Loader";
+import { useTranslation } from "react-i18next";
 
 const ServiceDetails = () => {
+  const { t } = useTranslation();
   const services = useSelector(getAllServices);
   const params = useParams();
   const serviceId = params.id;
@@ -16,14 +18,15 @@ const ServiceDetails = () => {
 
   useEffect(() => {
     setCurrentService(services.find((s) => s.id == serviceId));
-    console.log(currentService);
-  }, [services]);
+  }, []);
 
-  return services ? (
+  console.log(currentService);
+
+  return !currentService ? (
     <Loader />
   ) : (
     <>
-      <Breadcrumbs title={"about"} />
+      <Breadcrumbs title={t("Xidmət")} />
 
       <div className="container py-12">
         <div className="mb-12">
@@ -34,6 +37,13 @@ const ServiceDetails = () => {
             <p className="leading-8">
               {currentService && currentService.description}
             </p>
+          </div>
+          <div>
+            <img
+              className="w-full h-full object-cover"
+              src={`https://rigforce.az/api/v1/files?filepath=${currentService.images[0].filePath}`}
+              alt=""
+            />
           </div>
         </div>
       </div>

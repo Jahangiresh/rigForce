@@ -10,7 +10,7 @@ const Breadcrumbs = ({ title }) => {
   const { t } = useTranslation();
   const settings = useSelector(getAllSettings);
   return (
-    <div className="h-[400px] relative w-full flex  items-center ">
+    <div className="h-[400px] relative w-full flex  items-center bg-[#00000080]">
       <img
         className="w-full h-full absolute top-0 left-0 -z-10 object-cover object-left "
         src={`https://rigforce.az/api/v1/files?filepath=${

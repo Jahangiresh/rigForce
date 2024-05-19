@@ -16,7 +16,7 @@ const ServicesComponent = () => {
           <h1 className="font-bold text-[28px] text-white text-center mb3">
             {t("Xidmətlər")}
           </h1>
-          <p className="leading-6 text-center md:w-[700px] text-white">
+          {/* <p className="leading-6 text-center md:w-[700px] text-white">
             {settings &&
               settings.find(
                 (s) =>
@@ -28,7 +28,7 @@ const ServicesComponent = () => {
                   s.key ===
                   `${lang === "az" ? "servisler_az" : "servisler_eng"}`
               ).value}
-          </p>
+          </p> */}
         </div>
         <div className="services">
           <ServicesCard />

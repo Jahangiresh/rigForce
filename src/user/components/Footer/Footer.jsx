@@ -68,6 +68,12 @@ const Footer = () => {
                   settings.find((s) => s.key === "telefon1") &&
                   settings.find((s) => s.key === "telefon1").value}
               </li>
+              <li className="text-white">
+                {t("Email")}:{" "}
+                {settings &&
+                  settings.find((s) => s.key === "email") &&
+                  settings.find((s) => s.key === "email").value}
+              </li>
             </ul>
           </div>
         </div>

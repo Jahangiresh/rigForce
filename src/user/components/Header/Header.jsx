@@ -73,7 +73,6 @@ const Header = () => {
                           to={`/services/${scategory.id}`}
                           className="transition-all  duration-200 hover:text-[#3a85ad] flex flex-col  mb-3 cursor-pointer"
                         >
-                          {scategory.id}
                           {scategory.title}
                         </Link>
                       ))}

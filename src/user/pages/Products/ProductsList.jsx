@@ -77,12 +77,12 @@ const ProductsList = () => {
               {prods.length == 0 ? (
                 <div className="w-full col-span-3">
                   <div
-                    class="flex  p-4 text-sm text-gray-800 border border-gray-300 rounded-lg bg-gray-50 dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600"
+                    className="flex  p-4 text-sm text-gray-800 border border-gray-300 rounded-lg bg-gray-50 dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600"
                     role="alert"
                   >
                     <svg
                       aria-hidden="true"
-                      class="flex-shrink-0 inline w-5 h-5 mr-3"
+                      className="flex-shrink-0 inline w-5 h-5 mr-3"
                       fill="currentColor"
                       viewBox="0 0 20 20"
                       xmlns="http://www.w3.org/2000/svg"
@@ -93,9 +93,9 @@ const ProductsList = () => {
                         clip-rule="evenodd"
                       ></path>
                     </svg>
-                    <span class="sr-only">Info</span>
+                    <span className="sr-only">Info</span>
                     <div>
-                      <span class="font-medium">{t("Diqqət")}</span>{" "}
+                      <span className="font-medium">{t("Diqqət")}</span>{" "}
                       {t("MəhsulTapılmadı")}
                     </div>
                   </div>

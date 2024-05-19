@@ -15,7 +15,7 @@ const ProductBanner = () => {
     <div className="grid max-md:grid-cols-1 grid-cols-2 h-auto">
       {categories &&
         categories.slice(0, 2).map((category) => (
-          <div className="relative  h-[346px]  w-full flex  justify-center flex-col px-24 max-lg:px-10 ">
+          <div className="relative  h-[346px]  w-full flex  justify-center flex-col px-24 max-lg:px-10 bg-[#00000080]">
             <img
               className="absolute object-cover !w-full h-full top-0 left-0 -z-10"
               src={`https://rigforce.az/api/v1/files?filepath=${category.image.filePath}`}

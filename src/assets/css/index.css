@@ -59,6 +59,9 @@ body::-webkit-scrollbar-thumb {
 .text__black {
   @apply text-[#191919];
 }
+.text__blue {
+  @apply text-[#003049];
+}
 
 /* buttons */
 

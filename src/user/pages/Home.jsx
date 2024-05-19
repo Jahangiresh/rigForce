@@ -34,7 +34,7 @@ const Home = () => {
       <Slider {...settings}>
         {sliders &&
           sliders.map((slider) => (
-            <div className="cover h-[524px]  text-center relative w-full flex justify-center items-center">
+            <div className="cover h-[524px]  text-center relative w-full flex justify-center items-center bg-[#00000080]">
               <img
                 className="absolute top-0 left-0 h-full w-full  object-cover -z-10"
                 src={`https://rigforce.az/api/v1/files?filepath=${
@@ -56,47 +56,7 @@ const Home = () => {
               </div>
             </div>
           ))}
-        {/* <div className="cover h-[524px]  text-center relative w-full flex justify-center items-center">
-          <img
-            className="absolute top-0 left-0 h-full w-full  object-cover -z-10"
-            src={coverHomeSvg}
-            alt=""
-          />
-
-          <div className="cover__content !flex !flex-col !items-center !justify-center  h-full w-full max-sm:w-full max-sm:px-1 ">
-            <h1 className="font-bold text-white text-[38px] max-sm:text-[28px] max-sm:leading-2">
-              {sets &&
-                sets.find((s) => s.key === "banner1") &&
-                sets.find((s) => s.key === "banner1").value}
-            </h1>
-            <p className=" text-white sm:text-xl mt-6 max-sm:leading-8">
-              {sets &&
-                sets.find((s) => s.key === "banner2") &&
-                sets.find((s) => s.key === "banner2").value}
-            </p>
-          </div>
-        </div>{" "} */}
       </Slider>
-      {/* <div className="cover h-[524px]  text-center relative w-full flex justify-center items-center">
-        <img
-          className="absolute top-0 left-0 h-full w-full object-cover -z-10"
-          src={coverHomeSvg}
-          alt=""
-        />
-
-        <div className="cover__content   w-full max-sm:w-full max-sm:px-1 ">
-          <h1 className="font-bold text-white text-[38px] max-sm:text-[28px] max-sm:leading-2">
-            {sets &&
-              sets.find((s) => s.key === "banner1") &&
-              sets.find((s) => s.key === "banner1").value}
-          </h1>
-          <p className=" text-white sm:text-xl mt-6 max-sm:leading-8">
-            {sets &&
-              sets.find((s) => s.key === "banner2") &&
-              sets.find((s) => s.key === "banner2").value}
-          </p>
-        </div>
-      </div> */}
       <AboutComponent />
       <ServicesComponent />
       <ProductBanner />
