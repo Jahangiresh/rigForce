@@ -13,14 +13,14 @@ const Footer = () => {
     <div className="bg__blue pt-14">
       <div className="container">
         <div className=" flex justify-between gap-x-20 max-md:flex-col max-md:gap-y-10">
-          <div className="basis-6/12">
+          {/* <div className="basis-6/12">
             <h2 className="font-bold text-xl text-white">{t("Missiyamız")}</h2>
             <p className="text-justify text-white mt-3 leading-8 font-normal">
               {settings &&
                 settings.find((s) => s.key === "misyamiz") &&
                 settings.find((s) => s.key === "misyamiz").value}
             </p>
-          </div>
+          </div> */}
           <div className="basis-3/12 md:pl-10">
             <h2 className="font-bold text-xl text-white">Menu</h2>
             <ul className="text-white flex flex-col mt-3 leading-8">
