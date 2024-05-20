@@ -134,7 +134,7 @@ const ProductDetails = () => {
                 <a
                   className="btn__secondary"
                   href={`https://rigforce.az/api/v1/files?filepath=${
-                    prodDetails.files && prodDetails.files[0].filePath
+                    prodDetails.files && prodDetails.files[0]?.filePath
                   }`}
                   download
                 >
@@ -145,7 +145,7 @@ const ProductDetails = () => {
                 <a
                   className="btn__secondary"
                   href={`https://rigforce.az/api/v1/files?filepath=${
-                    prodDetails.files && prodDetails.files[1].filePath
+                    prodDetails.files && prodDetails.files[1]?.filePath
                   }`}
                   download
                 >
@@ -156,7 +156,7 @@ const ProductDetails = () => {
                 <a
                   className="btn__secondary"
                   href={`https://rigforce.az/api/v1/files?filepath=${
-                    prodDetails.files && prodDetails.files[2].filePath
+                    prodDetails.files && prodDetails.files[2]?.filePath
                   }`}
                   download
                 >
