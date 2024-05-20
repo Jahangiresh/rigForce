@@ -65,13 +65,15 @@ const ProductsList = () => {
     <>
       <Breadcrumbs title={t("Məhsullar")} />
       <div className="container">
-        <div className="grid grid-cols-4 gap-4 py-10 max-sm:grid-cols-1">
-          <div className="col-span-1">
+        <div className="grid grid-cols-3 gap-4 py-10 max-sm:grid-cols-1">
+          {" "}
+          {/*Filteri aktiv edəndə grid-cols-4 yazılmalıdır */}
+          {/* <div className="col-span-1">
             <h2 className="px-4 font-normal text-xl">
               {t("Məhsul Kateqoriyası")}
             </h2>
             <FilterCategoryList />
-          </div>
+          </div> */}
           <div className="col-span-3">
             <div className="grid grid-cols-3 max-sm:grid-cols-1 max-lg:grid-cols-2 gap-6 ">
               {prods.length == 0 ? (
