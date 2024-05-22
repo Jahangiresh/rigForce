@@ -1,33 +1,36 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import logoSvg from "../../../assets/images/logo.svg";
-import navmenu from "../../configs/navmenu";
 import { FiChevronDown } from "react-icons/fi";
 import MenuDrawer from "./MenuDrawer";
-import { useDispatch, useSelector } from "react-redux";
-import { getAllCategories, getStatus } from "../../../features/categorySlice";
+import { useSelector } from "react-redux";
+import { getAllCategories } from "../../../features/categorySlice";
 import HeaderLangs from "./HeaderLangs";
 import { useTranslation } from "react-i18next";
 import { getAllServiceCategories } from "../../../features/serviceCategorySlice";
 const Header = () => {
+  const { t } = useTranslation();
+  const lang = localStorage.getItem("i18nextLng");
   const navigate = useNavigate();
   const categories = useSelector(getAllCategories);
+  const [filteredCategories, setFilteredCategories] = useState([]);
   const serviceCategories = useSelector(getAllServiceCategories);
-  const status = useSelector(getStatus);
-  const dispatch = useDispatch();
 
   const navigateHandler = (catId) => {
-    // e.stopPropagation();
-    // console.log(title);
     navigate(`/products/${catId}`);
   };
-  const navigateHandler2 = (scatId) => {
-    // e.stopPropagation();
-    // console.log(title);
-    navigate(`/services/${scatId}`);
+
+  const filterCategoriesByLanguage = () => {
+    const filteredData = categories.filter((value) =>
+      value.title.endsWith(`_${lang}`)
+    );
+    setFilteredCategories([...filteredData]);
   };
-  // const s = "salam";
-  const { t } = useTranslation();
+
+  useEffect(() => {
+    filterCategoriesByLanguage();
+  }, [lang]);
+
   return (
     <div className="h-20  flex items-center">
       {/* <h1>{t(`${s}`)}</h1> */}

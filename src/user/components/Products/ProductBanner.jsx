@@ -21,16 +21,16 @@ const ProductBanner = () => {
               src={`https://rigforce.az/api/v1/files?filepath=${category.image.filePath}`}
               alt="banner"
             />
-            <div className="content flex flex-col justify-center items-center  h-full">
+            <div className="content flex flex-col justify-center items-center gap-6 h-full">
               <h2 className="text-white font-bold text-2xl text-center">
                 {category.title}{" "}
               </h2>
-              <p className="my-4 text-white lg:leading-2 ">
+              {/* <p className="my-4 text-white lg:leading-2 ">
                 {category.description}{" "}
-              </p>
+              </p> */}
               <button
                 onClick={() => navigate(`/products/${category.id}`)}
-                className="btn__secondary flex items-center w-44"
+                className="btn__secondary flex items-center w-44 justify-between"
               >
                 {t("Daha çox")} <FiChevronRight className="ml-2" />
               </button>
