@@ -81,7 +81,10 @@ const ProductDetails = () => {
           </div>
           <div className="col-span-2 pl-6 ">
             <h1 className="text__black font-bold text-[28px] mb-6 ">
-              {prodDetails.title && prodDetails.title}
+              {(prodDetails.title && prodDetails.title.endsWith("_az")) ||
+              prodDetails.title.endsWith("_en")
+                ? prodDetails.title.slice(0, -3)
+                : prodDetails.title}
             </h1>
             <ul className="leading-8">
               <li>

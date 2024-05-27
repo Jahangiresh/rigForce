@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Breadcrumbs from "../components/Breadcrumbs";
 import ServicesCard from "../components/Services/ServicesCard";
 import servicesvg from "../../assets/images/servicesvector.svg";
@@ -29,6 +29,8 @@ const reducer = (state, action) => {
 };
 const Services = () => {
   const { t } = useTranslation();
+  const lang = localStorage.getItem("i18nextLng");
+  const [serviceList, setServiceList] = useState([]);
   const [{ error, loader, services }, dispatch] = useReducer(reducer, {
     services: [],
     error: false,
@@ -59,6 +61,13 @@ const Services = () => {
     };
     getProds();
   }, [serCategory]);
+
+  useEffect(() => {
+    const filterByLanguage = services.filter((service) =>
+      service.title.endsWith(`_${lang ? lang : "en"}`)
+    );
+    setServiceList(filterByLanguage);
+  }, [services, lang]);
   return loader ? (
     <Loader />
   ) : (
@@ -66,7 +75,7 @@ const Services = () => {
       <Breadcrumbs title={t("Xidmətlər")} />
       <div className="container">
         <div className="grid md:grid-cols-3 max-lg:gap-x-6 gap-x-20 max-md:gap-y-10 my-12 ">
-          {services.length == 0 ? (
+          {serviceList.length == 0 ? (
             <div className="w-full col-span-3">
               <div
                 className="flex  p-4 text-sm text-gray-800 border border-gray-300 rounded-lg bg-gray-50 dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600"
@@ -93,8 +102,8 @@ const Services = () => {
               </div>
             </div>
           ) : (
-            services &&
-            services.map((service, index) => (
+            serviceList &&
+            serviceList.map((service, index) => (
               <div
                 key={index}
                 className="mb-3 py-7 px-3 max-md:px-10 flex flex-col items-center shadow-md rounded-lg border border-[#e3e3e3]"
@@ -108,7 +117,10 @@ const Services = () => {
                 </div>
                 <Link to={`/service/${service.id}`}>
                   <h2 className="text__black font-bold text-xl hover:text-amber-400	">
-                    {service.title}
+                    {service.title.endsWith("_az") ||
+                    service.title.endsWith("_en")
+                      ? service.title.slice(0, -3)
+                      : service.title}
                   </h2>
                 </Link>
                 {/* <p

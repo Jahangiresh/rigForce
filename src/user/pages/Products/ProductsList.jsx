@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Breadcrumbs from "../../components/Breadcrumbs";
 import prodImg from "../../../assets/images/prod.png";
 import { FiChevronRight } from "react-icons/fi";
@@ -30,6 +30,8 @@ const ProductsList = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const allProds = useSelector(getAllEquipments);
+  const lang = localStorage.getItem("i18nextLng");
+  const [productList, setProductList] = useState([]);
   const [{ error, loader, prods }, dispatch] = useReducer(reducer, {
     prods: [],
     error: false,
@@ -59,6 +61,14 @@ const ProductsList = () => {
     };
     getProds();
   }, [prodCategory]);
+
+  useEffect(() => {
+    const filterByLanguage = prods.filter((p) =>
+      p.title.endsWith(`_${lang ? lang : "en"}`)
+    );
+    setProductList(filterByLanguage);
+  }, [prods, lang]);
+
   return loader ? (
     <Loader />
   ) : (
@@ -76,7 +86,7 @@ const ProductsList = () => {
           </div> */}
           <div className="col-span-3">
             <div className="grid grid-cols-3 max-sm:grid-cols-1 max-lg:grid-cols-2 gap-6 ">
-              {prods.length == 0 ? (
+              {productList.length == 0 ? (
                 <div className="w-full col-span-3">
                   <div
                     className="flex  p-4 text-sm text-gray-800 border border-gray-300 rounded-lg bg-gray-50 dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600"
@@ -103,8 +113,8 @@ const ProductsList = () => {
                   </div>
                 </div>
               ) : (
-                prods &&
-                prods.map((prod) => (
+                productList &&
+                productList.map((prod) => (
                   <div className="rounded-md shadow-md border border-[#e3e3e3]">
                     <div className="pImage h-60 ">
                       <img
@@ -117,7 +127,10 @@ const ProductsList = () => {
                     </div>
                     <div className="content my-6 flex flex-col items-center px-6">
                       <h1 className="font-bold whitespace-normal text-center text-xl ">
-                        {prod.title}
+                        {prod.title.endsWith("_az") ||
+                        prod.title.endsWith("_en")
+                          ? prod.title.slice(0, -3)
+                          : prod.title}
                       </h1>
                       <p className="my-2 text-center leading-7">
                         {prod.description?.length > 100

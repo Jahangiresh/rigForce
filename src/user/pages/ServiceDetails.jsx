@@ -8,6 +8,7 @@ import ContactComponent from "../components/ContactComponent";
 import LogoClouds from "../components/LogoClouds";
 import Loader from "../components/Loader/Loader";
 import { useTranslation } from "react-i18next";
+import parse from "html-react-parser";
 
 const ServiceDetails = () => {
   const { t } = useTranslation();
@@ -20,8 +21,6 @@ const ServiceDetails = () => {
     setCurrentService(services.find((s) => s.id == serviceId));
   }, []);
 
-  console.log(currentService);
-
   return !currentService ? (
     <Loader />
   ) : (
@@ -31,11 +30,14 @@ const ServiceDetails = () => {
       <div className="container py-12">
         <div className="mb-12">
           <h1 className="text__black font-bold text-[28px] mb-3">
-            {currentService && currentService.title}
+            {(currentService && currentService.title.endsWith("_az")) ||
+            currentService.title.endsWith("_en")
+              ? currentService.title.slice(0, -3)
+              : currentService.title}
           </h1>
           <div className="flex">
             <p className="leading-8">
-              {currentService && currentService.description}
+              {currentService && parse(currentService.description)}
             </p>
           </div>
           <div>

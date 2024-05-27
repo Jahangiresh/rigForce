@@ -55,6 +55,9 @@ export default function Services() {
               name
             </th>
             <th scope="col" className="px-6 py-3">
+              language
+            </th>
+            <th scope="col" className="px-6 py-3">
               img
             </th>
             <th scope="col" className="px-6 py-3">
@@ -74,8 +77,14 @@ export default function Services() {
                   className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
                 >
                   {service.title > 20
-                    ? service.title.slice(0, 20) + "..."
-                    : service.title}
+                    ? service.title.slice(0, -3).slice(0, 20) + "..."
+                    : service.title.slice(0, -3)}
+                </th>
+                <th
+                  scope="row"
+                  className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white capitalize"
+                >
+                  {service.title && service.title.slice(-2)}
                 </th>
                 <td className="px-6 py-4 w-44">
                   <img

@@ -30,7 +30,7 @@ const Products = () => {
               />
               <div className="content flex flex-col justify-center  items-center  h-full">
                 <h2 className="text-white font-bold text-2xl ">
-                  {category.title}{" "}
+                  {category.title}
                 </h2>
                 <p className="my-4 text-white lg:leading-2 ">
                   {category.description}{" "}

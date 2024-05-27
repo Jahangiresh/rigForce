@@ -30,8 +30,18 @@ const EquipmentsCreate = () => {
       doCFile: null,
       dataSheet: "",
       equipmentCategoryId: "",
+      language: "_az",
     },
     onSubmit: (values) => {
+      if (!values.title.endsWith("_az") && !values.title.endsWith("_en")) {
+        values.title = values.title + values.language;
+      } else if (values.title.endsWith("_az") && values.language === "_en") {
+        values.title = values.title.slice(0, -3);
+        values.title = values.title + "_en";
+      } else if (values.title.endsWith("_en") && values.language === "_az") {
+        values.title = values.title.slice(0, -3);
+        values.title = values.title + "_az";
+      }
       const req = new FormData();
       req.append("title", values.title);
       req.append("description", values.description);
@@ -264,6 +274,19 @@ const EquipmentsCreate = () => {
         >
           {categories &&
             categories.map((c) => <option value={c.id}>{c.title}</option>)}
+        </select>
+        <label className="createadvocates__forms__label" htmlFor="language">
+          Dil
+        </label>
+        <select
+          className="createadvocates__forms__input"
+          id="language"
+          name="language"
+          type="text"
+          onChange={formik.handleChange}
+        >
+          <option value="_az">Azərbaycan</option>
+          <option value="_en">English</option>
         </select>
         <button className="createadvocates__forms__button" type="submit">
           Submit

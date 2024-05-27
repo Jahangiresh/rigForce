@@ -49,7 +49,7 @@ export default function Equipments() {
         <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
           <tr>
             <th scope="col" className="px-6 py-3">
-              Name
+              Image
             </th>
             <th scope="col" className="px-6 py-3">
               Name
@@ -58,7 +58,7 @@ export default function Equipments() {
               Position
             </th>
             <th scope="col" className="px-6 py-3">
-              Status
+              Language
             </th>
             <th scope="col" className="px-6 py-3">
               Action
@@ -83,7 +83,9 @@ export default function Equipments() {
                   />
                   <div className="pl-3">
                     <div className="text-base font-semibold">
-                      {equipment.title}
+                      {equipment.title > 20
+                        ? equipment.title.slice(0, -3).slice(0, 20) + "..."
+                        : equipment.title.slice(0, -3)}
                     </div>
                     <div className="font-normal text-gray-500">
                       {equipment.productCode}
@@ -99,8 +101,8 @@ export default function Equipments() {
                 <td className="px-6 py-4">
                   {equipment.accreditedTo && equipment.accreditedTo}
                 </td>
-                <td className="px-6 py-4">
-                  {equipment.material && equipment.material}
+                <td className="px-6 py-4 capitalize">
+                  {equipment.title && equipment.title.slice(-2)}
                 </td>
                 <td className="px-6 py-4">
                   <div className="flex gap-x-4 text-2xl text-black">

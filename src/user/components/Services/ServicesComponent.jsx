@@ -7,7 +7,6 @@ import { useTranslation } from "react-i18next";
 const ServicesComponent = () => {
   const settings = useSelector(getAllSettings);
   const { t, i18n } = useTranslation();
-  const lang = localStorage.getItem("i18nextLng");
 
   return (
     <div className="bg__blue py-12">
