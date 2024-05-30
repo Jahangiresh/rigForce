@@ -123,21 +123,6 @@ const Services = () => {
                       : service.title}
                   </h2>
                 </Link>
-                {/* <p
-                  style={{
-                    whiteSpace: "normal",
-                  }}
-                  className="my-4 text__black text-center h-auto"
-                >
-                  {service.description}
-                </p> */}
-
-                {/* <button
-                  onClick={() => navigate(`/services/${service.id}`)}
-                  className="btn__secondary flex items-center mt-6"
-                >
-                  Daha ətraflı <FiChevronRight className="ml-2" />
-                </button> */}
               </div>
             ))
           )}

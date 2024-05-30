@@ -19,7 +19,7 @@ const ServiceDetails = () => {
 
   useEffect(() => {
     setCurrentService(services.find((s) => s.id == serviceId));
-  }, []);
+  }, [services]);
 
   return !currentService ? (
     <Loader />

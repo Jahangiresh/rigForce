@@ -75,7 +75,7 @@ const ServiceCategoriesEdit = () => {
         );
         toast.success(" updated");
 
-        // window.location = "/admin/advocates";
+        window.location = "/admin/adminalshn001907/servicescategories";
       } catch (error) {
         if (error.response.status === 401) {
           AuthService.refreshToken();

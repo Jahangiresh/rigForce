@@ -6,13 +6,13 @@ const initialState = {
   items: [],
   status: null,
 };
-const { accessToken } = localStorage.getItem("user")
-  ? JSON.parse(localStorage.getItem("user"))
-  : "";
 
 export const createCategory = createAsyncThunk(
   "category/postApi",
   async (payload) => {
+    const { accessToken } = localStorage.getItem("user")
+      ? JSON.parse(localStorage.getItem("user"))
+      : "";
     const response = await axios
       .post(`https://rigforce.az/api/v1/equipmentcategories`, payload, {
         headers: {
@@ -26,7 +26,7 @@ export const createCategory = createAsyncThunk(
       })
       .then((res) => {
         toast.success("yaradıldı");
-        // window.location = "/adminalshn001907/branches";
+        window.location = "/adminalshn001907/categories";
       })
       .catch(async (err) => {
         if (err.response.status === 401) {
@@ -40,6 +40,9 @@ export const deleteCategory = createAsyncThunk(
   "category/deleteApi",
   async (payload) => {
     try {
+      const { accessToken } = localStorage.getItem("user")
+        ? JSON.parse(localStorage.getItem("user"))
+        : "";
       const response = await axios.delete(
         `https://rigforce.az/api/v1/equipmentcategories/${payload}`,
         {
@@ -48,7 +51,7 @@ export const deleteCategory = createAsyncThunk(
           },
         }
       );
-      // window.location = "/adminalshn001907/branches";
+      window.location = "/adminalshn001907/categories";
       toast.success("silindi");
 
       return response.data;

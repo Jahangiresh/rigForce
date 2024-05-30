@@ -7,12 +7,13 @@ const initialState = {
   items: [],
   status: null,
 };
-const { accessToken } = localStorage.getItem("user")
-  ? JSON.parse(localStorage.getItem("user"))
-  : "";
+
 export const deleteService = createAsyncThunk(
   "Services/deleteApi",
   async (payload) => {
+    const { accessToken } = localStorage.getItem("user")
+      ? JSON.parse(localStorage.getItem("user"))
+      : "";
     try {
       const response = await axios.delete(
         `https://rigforce.az/api/v1/providedservices/${payload}`,
@@ -22,7 +23,7 @@ export const deleteService = createAsyncThunk(
           },
         }
       );
-      // window.location = "/adminalshn001907/branches";
+      window.location = "/adminalshn001907/services";
       toast.success("silindi");
 
       return response.data;
@@ -37,6 +38,9 @@ export const deleteService = createAsyncThunk(
 export const createService = createAsyncThunk(
   "Services/createService", // Fix: Use a unique action type
   async (payload) => {
+    const { accessToken } = localStorage.getItem("user")
+      ? JSON.parse(localStorage.getItem("user"))
+      : "";
     const response = await axios
       .post("https://rigforce.az/api/v1/providedservices", payload, {
         headers: {
@@ -46,9 +50,12 @@ export const createService = createAsyncThunk(
       })
       .then((res) => {
         toast.success("yaradıldı");
-        // window.location = "/adminalshn001907/branches";
+        window.location = "/adminalshn001907/services";
       })
       .catch((err) => {
+        for (const property in err?.response?.data?.errors) {
+          toast.error(property);
+        }
         if (err.response.status === 401) {
           AuthService.refreshToken();
         }

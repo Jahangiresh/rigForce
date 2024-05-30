@@ -6,13 +6,13 @@ const initialState = {
   items: [],
   status: null,
 };
-const { accessToken } = localStorage.getItem("user")
-  ? JSON.parse(localStorage.getItem("user"))
-  : "";
 
 export const createServiceCategory = createAsyncThunk(
   "serviceCategory/postApi",
   async (payload) => {
+    const { accessToken } = localStorage.getItem("user")
+      ? JSON.parse(localStorage.getItem("user"))
+      : "";
     const response = await axios
       .post(`https://rigforce.az/api/v1/providedservicecategories`, payload, {
         headers: {
@@ -26,7 +26,7 @@ export const createServiceCategory = createAsyncThunk(
       })
       .then((res) => {
         toast.success("yaradıldı");
-        // window.location = "/adminalshn001907/branches";
+        window.location = "/adminalshn001907/servicescategories";
       })
       .catch((err) => {
         if (err.response.status === 401) {
@@ -40,6 +40,9 @@ export const createServiceCategory = createAsyncThunk(
 export const deleteServiceCategory = createAsyncThunk(
   "serviceCategory/deleteApi",
   async (payload) => {
+    const { accessToken } = localStorage.getItem("user")
+      ? JSON.parse(localStorage.getItem("user"))
+      : "";
     try {
       const response = await axios.delete(
         `https://rigforce.az/api/v1/providedservicecategories/${payload}`,
@@ -49,7 +52,7 @@ export const deleteServiceCategory = createAsyncThunk(
           },
         }
       );
-      // window.location = "/adminalshn001907/branches";
+      window.location = "/adminalshn001907/servicescategories";
       toast.success("silindi");
 
       return response.data;

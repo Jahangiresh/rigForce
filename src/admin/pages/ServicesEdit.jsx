@@ -106,7 +106,7 @@ const ServicesEdit = () => {
         );
         toast.success(" updated");
 
-        // window.location = "/admin/advocates";
+        window.location = "/adminalshn001907/services";
       } catch (error) {
         if (error.response.status === 401) {
           AuthService.refreshToken();

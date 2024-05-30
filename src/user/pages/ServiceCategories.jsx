@@ -4,7 +4,7 @@ import ContactComponent from "../components/ContactComponent";
 import LogoClouds from "../components/LogoClouds";
 
 import { FiChevronRight } from "react-icons/fi";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
   getAllServiceCategories,
   getStatus,
@@ -23,29 +23,22 @@ const ServiceCategories = () => {
   ) : (
     <>
       <Breadcrumbs title={t("Xidmətlər")} />
-      <div className="container grid max-md:grid-cols-1 grid-cols-2 h-auto py-10 gap-x-3">
+      <div className="container grid max-md:grid-cols-1 grid-cols-2 h-auto py-10 gap-x-3 gap-y-4">
         {categories &&
           categories.map((category) => (
-            <div className="relative  h-[346px]  w-full flex  justify-center flex-col px-24 max-lg:px-10 mb-3 bg-[#00000080]">
-              <img
-                className="absolute object-cover !w-full h-full top-0 left-0 -z-10"
-                src={`https://rigforce.az/api/v1/files?filepath=${category.image.filePath}`}
-                alt="banner"
-              />
-              <div className="content flex flex-col justify-center items-center  h-full">
-                <h2 className="text-white font-bold text-2xl ">
-                  {category.title}{" "}
-                </h2>
-                <p className="my-4 text-white lg:leading-2 ">
-                  {category.description}{" "}
-                </p>
-                <button
-                  onClick={() => navigate(`/services/${category.id}`)}
-                  className="btn__secondary flex items-center justify-center w-44"
-                >
-                  {t("Daha ətraflı")} <FiChevronRight className="ml-2" />
-                </button>
+            <div className="flex flex-col bg-[#003049]" key={category.id}>
+              <div className="serviceimage w-full h-64 bg-white">
+                <img
+                  className="w-full h-full object-cover"
+                  src={`https://rigforce.az/api/v1/files?filepath=${category.image.filePath}`}
+                  alt=""
+                />
               </div>
+              <Link to={`/services/${category.id}`} className="py-4 pl-3">
+                <h2 className="text-white font-bold text-xl hover:text-amber-400">
+                  {category.title}
+                </h2>
+              </Link>
             </div>
           ))}
       </div>

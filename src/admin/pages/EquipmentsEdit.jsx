@@ -119,7 +119,7 @@ const EquipmentsEdit = () => {
         );
         toast.success(" updated");
 
-        // window.location = "/admin/advocates";
+        window.location = "/adminalshn001907/equipments";
       } catch (error) {
         if (error.response.status === 401) {
           AuthService.refreshToken();
