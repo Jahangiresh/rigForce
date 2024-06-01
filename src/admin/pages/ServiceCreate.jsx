@@ -1,13 +1,18 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useFormik } from "formik";
 import "../scss/adminadvocates.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { Toaster } from "react-hot-toast";
-import { createCategory } from "../../features/categorySlice";
 import { createService } from "../../features/serviceSlice";
 import { getAllServiceCategories } from "../../features/serviceCategorySlice";
 import ReactQuill from "react-quill";
-import "react-quill/dist/quill.snow.css";
+import "react-quill/dist/quill.snow.css"; // Quill-in əsas stili
+import "react-quill/dist/quill.bubble.css"; // İkinci tema (lazım olarsa)
+import { Quill } from "react-quill";
+
+// Quill formatsız hizalanma üçün konfiqurasiyalar
+var AlignStyle = Quill.import("attributors/style/align");
+Quill.register(AlignStyle, true);
 
 const ServiceCreate = () => {
   const [descriptionValue, setDescriptionValue] = useState("");
@@ -57,6 +62,33 @@ const ServiceCreate = () => {
     },
   });
 
+  const modules = {
+    toolbar: [
+      [{ header: "1" }, { header: "2" }, { font: [] }],
+      [{ list: "ordered" }, { list: "bullet" }],
+      ["bold", "italic", "underline"],
+      [{ color: [] }, { background: [] }], // Text color və background color düymələri
+      [{ align: [] }], // Text align düymələri
+      [{ size: [] }],
+      ["clean"],
+    ],
+  };
+
+  const formats = [
+    "header",
+    "font",
+    "size",
+    "bold",
+    "italic",
+    "underline",
+    "list",
+    "bullet",
+    "indent",
+    "color",
+    "background", // Bu parametrləri əlavə edirik
+    "align", // Text align formatı
+  ];
+
   return (
     <div className="createadvocates">
       <div>
@@ -98,21 +130,19 @@ const ServiceCreate = () => {
           name="title"
           type="text"
           onChange={formik.handleChange}
-          defaultValue={formik.values.title}
+          value={formik.values.title}
         />
 
         <label className="createadvocates__forms__label" htmlFor="address">
           desc
         </label>
-        {/* <input
-          className="createadvocates__forms__input"
-          id="description"
-          name="description"
-          type="text"
-          onChange={formik.handleChange}
-          defaultValue={formik.values.description}
-        /> */}
-        <ReactQuill theme="snow" onChange={descriptionOnChange} />
+        <ReactQuill
+          theme="snow"
+          value={descriptionValue}
+          onChange={descriptionOnChange}
+          modules={modules}
+          formats={formats}
+        />
         <label className="createadvocates__forms__label" htmlFor="name">
           equipmentCategoryId
         </label>
@@ -122,10 +152,14 @@ const ServiceCreate = () => {
           name="providedServiceCategoryId"
           type="text"
           onChange={formik.handleChange}
-          defaultValue={formik.values.providedServiceCategoryId}
+          value={formik.values.providedServiceCategoryId}
         >
           {categories &&
-            categories.map((c) => <option value={c.id}>{c.title}</option>)}
+            categories.map((c) => (
+              <option key={c.id} value={c.id}>
+                {c.title}
+              </option>
+            ))}
         </select>
         <label className="createadvocates__forms__label" htmlFor="language">
           Dil
@@ -136,6 +170,7 @@ const ServiceCreate = () => {
           name="language"
           type="text"
           onChange={formik.handleChange}
+          value={formik.values.language}
         >
           <option value="_az">Azərbaycan</option>
           <option value="_en">English</option>

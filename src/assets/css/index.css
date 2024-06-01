@@ -125,3 +125,57 @@ body::-webkit-scrollbar-thumb {
   width: 100% !important;
   height: 100% !important;
 } */
+
+.quill-content {
+  /* List elementlərinin default stilini yenidən bərpa etmək */
+  ol,
+  ul {
+    list-style: auto !important; /* Və ya istədiyiniz bir stil */
+    padding-left: 40px; /* Soldan boşluq əlavə etmək */
+  }
+
+  /* Quill tərəfindən yaradılan məzmunun daha yaxşı görünməsi üçün əlavə stil */
+  p {
+    margin: 0 0 10px;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin: 20px 0 10px;
+    font-weight: bolder !important;
+  }
+  h1 {
+    font-size: 34px;
+  }
+  h2 {
+    font-size: 30px;
+  }
+  h3 {
+    font-size: 24px;
+  }
+  h4 {
+    font-size: 20px;
+  }
+  h5 {
+    font-size: 18px;
+  }
+  h6 {
+    font-size: 16px;
+  }
+
+  .ql-size-small {
+    font-size: 0.75em; /* Məzmunu kiçiltmək üçün */
+  }
+
+  .ql-size-large {
+    font-size: 1.5em; /* Məzmunu böyütmək üçün */
+  }
+
+  .ql-size-huge {
+    font-size: 2.5em; /* Məzmunu daha da böyütmək üçün */
+  }
+}

@@ -1,4 +1,4 @@
-import React, { useEffect, useReducer, useState } from "react";
+import React, { useEffect, useReducer } from "react";
 import { useFormik } from "formik";
 import { useParams } from "react-router-dom";
 import axios from "axios";
@@ -6,8 +6,6 @@ import { toast, Toaster } from "react-hot-toast";
 import { useSelector } from "react-redux";
 import { getAllServiceCategories } from "../../features/serviceCategorySlice";
 import AuthService from "../services/AuthService";
-// import { ToastContainer, toast } from "react-toastify";
-// import "react-toastify/dist/ReactToastify.css";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 
@@ -115,6 +113,34 @@ const ServicesEdit = () => {
       }
     },
   });
+
+  const modules = {
+    toolbar: [
+      [{ header: "1" }, { header: "2" }, { font: [] }],
+      [{ list: "ordered" }, { list: "bullet" }],
+      ["bold", "italic", "underline"],
+      [{ color: [] }, { background: [] }], // Text color və background color düymələri
+      [{ align: [] }], // Text align düymələri
+      [{ size: [] }],
+      ["clean"],
+    ],
+  };
+
+  const formats = [
+    "header",
+    "font",
+    "size",
+    "bold",
+    "italic",
+    "underline",
+    "list",
+    "bullet",
+    "indent",
+    "color",
+    "background", // Bu parametrləri əlavə edirik
+    "align", // Text align formatı
+  ];
+
   return (
     <div>
       <div className="createadvocates">
@@ -163,19 +189,12 @@ const ServicesEdit = () => {
           <label className="createadvocates__forms__label" htmlFor="firstName">
             description{" "}
           </label>
-          {/* <input
-            className="createadvocates__forms__input"
-            id="description"
-            name="description"
-            type="text"
-            onChange={formik.handleChange}
-            // value={formik.values.firstName}
-            defaultValue={service.description}
-          /> */}
           <ReactQuill
             theme="snow"
-            onChange={descriptionOnChange}
             value={service.description}
+            onChange={descriptionOnChange}
+            modules={modules}
+            formats={formats}
           />
           <select
             className="createadvocates__forms__input"

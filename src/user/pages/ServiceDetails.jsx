@@ -35,10 +35,8 @@ const ServiceDetails = () => {
               ? currentService.title.slice(0, -3)
               : currentService.title}
           </h1>
-          <div className="flex">
-            <p className="leading-8">
-              {currentService && parse(currentService.description)}
-            </p>
+          <div className="quill-content">
+            {currentService && parse(currentService.description)}
           </div>
           <div>
             <img
