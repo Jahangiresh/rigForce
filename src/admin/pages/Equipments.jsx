@@ -78,7 +78,7 @@ export default function Equipments() {
                 >
                   <img
                     className="w-10 h-10 rounded-full object-contain"
-                    src={`https://rigforce.az/api/v1/files?filepath=${equipment.equipmentCategory.image.filePath}`}
+                    src={`https://rigforce.az/api/v1/files?filepath=${equipment?.images?.[0]?.filePath}`}
                     alt="img"
                   />
                   <div className="pl-3">
